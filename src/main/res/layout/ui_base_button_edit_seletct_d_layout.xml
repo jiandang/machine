@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                       android:layout_width="match_parent"
+                       android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/btn_edit_name"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:textColor="@color/ui_base_text_color_black"
+        android:textSize="25sp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/btn_edit_name"
+        android:orientation="horizontal">
+
+
+        <LinearLayout
+            android:id="@+id/btn_edit_linearLayout"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:layout_below="@id/btn_edit_name"
+            android:orientation="horizontal"
+            android:background="@drawable/ui_base_circlebuttonstyle">
+
+            <EditText
+                android:id="@+id/btn_edit_edit_select"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:padding="5dp"
+                android:textSize="20sp"
+                android:gravity="center"
+                android:singleLine="true"
+                android:layout_weight="3"
+                android:textColorHighlight="@color/ui_base_text_background"
+                android:background="@drawable/ui_base_button_green_normal"
+                />
+
+            <TextView
+                android:id="@+id/btn_edit_select_line"
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:background="@color/ui_base_text_background" />
+
+            <Button
+                android:id="@+id/btn_edit_select_btn"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:layout_weight="1"
+                android:drawableRight="@mipmap/fni"
+                android:background="@null"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/btn_edit_linearLayout_2"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:layout_below="@id/btn_edit_name"
+            android:orientation="horizontal"
+            android:background="@drawable/ui_base_circlebuttonstyle">
+
+            <EditText
+                android:id="@+id/btn_edit_edit_select_2"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:padding="5dp"
+                android:textSize="20sp"
+                android:gravity="center"
+                android:singleLine="true"
+                android:layout_weight="3"
+                android:textColorHighlight="@color/ui_base_text_background"
+                android:background="@drawable/ui_base_button_green_normal"
+                />
+
+            <TextView
+                android:id="@+id/btn_edit_select_line_2"
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:background="@color/ui_base_text_background" />
+
+            <Button
+                android:id="@+id/btn_edit_select_btn_2"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@null"
+                android:drawableRight="@mipmap/fni"
+                android:gravity="center" />
+
+        </LinearLayout>
+
+        <EditText
+            android:id="@+id/btn_edit_edit_input"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:padding="5dp"
+            android:textSize="25sp"
+            android:gravity="center"
+            android:singleLine="true"
+            android:layout_weight="1"
+            android:textColorHighlight="@color/ui_base_text_background"
+            android:background="@drawable/ui_base_circlebuttonstyle"
+            />
+
+        <Button
+            android:id="@+id/btn_edit_query_btn"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:textSize="20sp"
+            android:layout_weight="1"/>
+
+        <TextView
+            android:id="@+id/btn_edit_display"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:textSize="20sp"
+            android:gravity="center"/>
+
+    </LinearLayout>
+
+
+</RelativeLayout>

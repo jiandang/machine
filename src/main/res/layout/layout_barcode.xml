@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="30dp"
+    android:orientation="vertical">
+    <TextView
+        android:layout_gravity="center_horizontal"
+        android:text="提示"
+        android:textSize="30dp"
+        android:textColor="#333"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <EditText
+        android:id="@+id/et_barcode"
+        android:layout_marginTop="30dp"
+        android:layout_gravity="center_horizontal"
+        android:hint="请输入条形码"
+        android:background="@null"
+        android:textSize="30dp"
+        android:textColor="#333"
+        android:layout_width="300dp"
+        android:layout_height="60dp" />
+    <!--数字键盘-->
+    <LinearLayout
+        android:id="@+id/ll_number"
+        android:layout_gravity="center_horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="40dp" />
+        <!--第一行数字-->
+        <LinearLayout
+            android:layout_width="640dp"
+            android:layout_height="wrap_content"
+            android:gravity="center">
+
+            <Button
+                android:id="@+id/btn_7"
+                android:layout_width="130dp"
+                android:layout_height="110dp"
+                android:background="@drawable/shape_76c5f0"
+                android:text="7"
+                android:textColor="#eee"
+                android:textSize="50dp" />
+
+            <View
+                android:layout_width="10dp"
+                android:layout_height="match_parent" />
+
+            <Button
+                android:id="@+id/btn_8"
+                android:layout_width="130dp"
+                android:layout_height="110dp"
+                android:background="@drawable/shape_76c5f0"
+                android:text="8"
+                android:textColor="#eee"
+                android:textSize="50dp" />
+
+            <View
+                android:layout_width="10dp"
+                android:layout_height="match_parent" />
+
+            <Button
+                android:id="@+id/btn_9"
+                android:layout_width="130dp"
+                android:layout_height="110dp"
+                android:background="@drawable/shape_76c5f0"
+                android:text="9"
+                android:textColor="#eee"
+                android:textSize="50dp" />
+
+            <View
+                android:layout_width="10dp"
+                android:layout_height="match_parent" />
+
+            <Button
+                android:id="@+id/btn_del"
+                android:layout_width="130dp"
+                android:layout_height="110dp"
+                android:background="@drawable/shape_76c5f0"
+                android:text="c"
+                android:textColor="#eee"
+                android:textSize="50dp" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="10dp" />
+        <!--第二行数字-->
+        <LinearLayout
+            android:layout_width="640dp"
+            android:layout_height="wrap_content"
+            android:gravity="center">
+
+            <Button
+                android:id="@+id/btn_4"
+                android:layout_width="130dp"
+                android:layout_height="110dp"
+                android:background="@drawable/shape_76c5f0"
+                android:text="4"
+                android:textColor="#eee"
+                android:textSize="50dp" />
+
+            <View
+                android:layout_width="10dp"
+                android:layout_height="match_parent" />
+
+            <Button
+                android:id="@+id/btn_5"
+                android:layout_width="130dp"
+                android:layout_height="110dp"
+                android:background="@drawable/shape_76c5f0"
+                android:text="5"
+                android:textColor="#eee"
+                android:textSize="50dp" />
+
+            <View
+                android:layout_width="10dp"
+                android:layout_height="match_parent" />
+
+            <Button
+                android:id="@+id/btn_6"
+                android:layout_width="130dp"
+                android:layout_height="110dp"
+                android:background="@drawable/shape_76c5f0"
+                android:text="6"
+                android:textColor="#eee"
+                android:textSize="50dp" />
+
+            <View
+                android:layout_width="10dp"
+                android:layout_height="match_parent" />
+
+            <Button
+                android:id="@+id/btn_0"
+                android:layout_width="130dp"
+                android:layout_height="110dp"
+                android:background="@drawable/shape_76c5f0"
+                android:text="0"
+                android:textColor="#eee"
+                android:textSize="50dp" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="10dp" />
+        <!--第三行数字-->
+        <LinearLayout
+            android:layout_width="640dp"
+            android:layout_height="wrap_content"
+            android:gravity="center">
+
+            <Button
+                android:id="@+id/btn_1"
+                android:layout_width="130dp"
+                android:layout_height="110dp"
+                android:background="@drawable/shape_76c5f0"
+                android:text="1"
+                android:textColor="#eee"
+                android:textSize="50dp" />
+
+            <View
+                android:layout_width="10dp"
+                android:layout_height="match_parent" />
+
+            <Button
+                android:id="@+id/btn_2"
+                android:layout_width="130dp"
+                android:layout_height="110dp"
+                android:background="@drawable/shape_76c5f0"
+                android:text="2"
+                android:textColor="#eee"
+                android:textSize="50dp" />
+
+            <View
+                android:layout_width="10dp"
+                android:layout_height="match_parent" />
+
+            <Button
+                android:id="@+id/btn_3"
+                android:layout_width="130dp"
+                android:layout_height="110dp"
+                android:background="@drawable/shape_76c5f0"
+                android:text="3"
+                android:textColor="#eee"
+                android:textSize="50dp" />
+
+            <View
+                android:layout_width="10dp"
+                android:layout_height="match_parent" />
+
+            <Button
+                android:id="@+id/btn_confirm"
+                android:layout_width="130dp"
+                android:layout_height="110dp"
+                android:background="@drawable/shape_76c5f0"
+                android:text="√"
+                android:textColor="#eee"
+                android:textSize="50dp" />
+        </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="30dp"/>
+    </LinearLayout>
+</LinearLayout>

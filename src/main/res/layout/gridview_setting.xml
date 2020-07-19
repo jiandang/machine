@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <LinearLayout
+        android:id="@+id/ll_img"
+        android:layout_marginTop="4dp"
+        android:layout_gravity="center"
+        android:background="@drawable/shape_biankuang_wu_se_alpha_wu_yuan_jiao"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:id="@+id/iv_manage"
+            android:layout_width="140dp"
+            android:layout_height="100dp"
+            android:src="@drawable/image"
+            />
+    </LinearLayout>
+
+    <TextView
+        android:layout_marginTop="20dp"
+        android:id="@+id/tv_manage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="图片一"
+        android:textColor="#2c2c2c"
+        android:textSize="25dp"/>
+</LinearLayout>

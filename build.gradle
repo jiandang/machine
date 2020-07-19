@@ -1,0 +1,96 @@
+apply plugin: 'com.android.application'
+//apply plugin: 'com.neenbedankt.android-apt'
+android {
+    compileSdkVersion 27
+    buildToolsVersion "27.0.3"
+
+    defaultConfig {
+        applicationId "com.example.myapp"
+        minSdkVersion 17
+        targetSdkVersion 23
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        javaCompileOptions { annotationProcessorOptions { includeCompileClasspath = true } }
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        sourceSets {
+            main { jni.srcDirs = [] }
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+repositories {
+    google()
+    jcenter()
+    mavenCentral()
+    maven { url "https://dl.bintray.com/thelasterstar/maven/" }
+    flatDir {
+        dirs 'libs'   // aar目录
+    }
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    androidTestImplementation('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    implementation(name: 'tcn_springboard-release', ext: 'aar')
+    implementation 'com.android.support:appcompat-v7:27.+'
+    implementation 'com.android.support.constraint:constraint-layout:1.0.0-alpha8'
+    implementation 'com.android.support:support-v4:27.+'
+    implementation 'com.android.support:recyclerview-v7:27.+'
+    implementation 'com.android.support:cardview-v7:27.+'
+    implementation 'com.android.support:design:27.+'
+    implementation 'com.jakewharton:butterknife:5.1.1'
+    implementation 'com.youth.banner:banner:1.4.9'
+    implementation 'com.github.bumptech.glide:glide:3.7.0'
+    implementation 'org.xutils:xutils:3.3.36'
+    implementation 'com.google.code.gson:gson:2.7'
+//    compile files('libs/android-logging-log4j-1.0.3.jar')
+//    compile files('libs/log4j-1.2.17.jar')
+    implementation project(':okhttputils')
+    implementation project(':libzxing')
+}
+buildscript {
+    repositories {
+        google()
+        jcenter()
+        maven { url 'http://developer.huawei.com/repo/' }
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:3.0.0'
+//        classpath 'com.novoda:bintray-release:0.5.0'
+//        classpath 'com.neenbedankt.gradle.plugins:android-apt:1.8'
+    }
+}
+
+allprojects {//解决加载multidex1.0.2失败
+    repositories {
+        maven { url 'http://maven.oa.com/nexus/content/repositories/android' }
+    }
+    repositories { mavenCentral() }
+}
+
+// Output
+android.applicationVariants.all { variant ->
+    variant.outputs.all {
+        def apkName
+        def date = new Date()
+        def apk_time = date.format('yyyyMMdd_HHmm')
+        apkName = "hft_android_v" +
+                variant.versionName +  "_" +
+                variant.buildType.name + "_" +
+                apk_time +
+                ".apk"
+        outputFileName  = apkName
+    }
+}

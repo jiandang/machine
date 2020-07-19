@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#E9F7FF"
+    tools:context="com.example.myapplication.MainActivity">
+    <include layout="@layout/top"/>
+    <com.youth.banner.Banner
+        android:id="@+id/banner"
+        android:layout_width="match_parent"
+        android:layout_height="600dp"
+        app:indicator_drawable_selected="@drawable/banner_indicator_selected"
+        app:indicator_drawable_unselected="@drawable/banner_indicator_unselected"
+        app:is_auto_play="true"
+        app:title_height="50dp"
+        app:title_textcolor="@color/white"
+        app:title_textsize="25dp"/>
+    <android.support.v4.view.ViewPager
+        android:id="@+id/vPager"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_gravity="center"
+        android:layout_weight="1.0"
+        android:background="@color/white"
+        android:flipInterval="30"
+        android:persistentDrawingCache="animation" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout1"
+        android:layout_width="match_parent"
+        android:layout_height="210dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        >
+
+        <LinearLayout
+            android:id="@+id/ll_drink"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="bottom"
+            android:layout_weight="1"
+            android:background="@drawable/footer_bg_xuanzhong"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/iv_drink"
+                android:layout_width="90dp"
+                android:layout_height="90dp"
+                android:src="@drawable/yinliaolingshi" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="15dp" />
+
+            <TextView
+                android:id="@+id/drink_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="饮料零食"
+                android:textColor="#fff"
+                android:textSize="30dp" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="10dp"
+            android:layout_height="match_parent" />
+
+        <LinearLayout
+            android:id="@+id/ll_daily"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="bottom"
+            android:layout_weight="1"
+            android:background="@drawable/footer_bg"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/iv_daily"
+                android:layout_width="90dp"
+                android:layout_height="90dp"
+                android:src="@drawable/riyongbaihuo" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="15dp" />
+
+            <TextView
+                android:id="@+id/daily_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="日用百货"
+                android:textColor="#fff"
+                android:textSize="30dp" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="10dp"
+            android:layout_height="match_parent" />
+
+        <LinearLayout
+            android:id="@+id/ll_transport"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="bottom"
+            android:layout_weight="1"
+            android:background="@drawable/footer_bg"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/iv_transport"
+                android:layout_width="90dp"
+                android:layout_height="90dp"
+                android:src="@drawable/jiaotongka" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="15dp" />
+
+            <TextView
+                android:id="@+id/transport_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="交通卡"
+                android:textColor="#fff"
+                android:textSize="30dp" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="10dp"
+            android:layout_height="match_parent" />
+
+        <LinearLayout
+            android:id="@+id/ll_card"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="bottom"
+            android:layout_weight="1"
+            android:background="@drawable/footer_bg"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/iv_card"
+                android:layout_width="90dp"
+                android:layout_height="90dp"
+                android:src="@drawable/shebeiguanli" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="15dp" />
+
+            <TextView
+                android:id="@+id/card_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="卡券取货"
+                android:textColor="#fff"
+                android:textSize="30dp" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

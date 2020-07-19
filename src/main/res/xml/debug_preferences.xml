@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    android:title="设置"
+    >
+    <ListPreference 
+        android:key="PosType"
+        android:title="选择POS机"
+        />
+    <ListPreference
+        android:key="DataType"
+        android:title="选择数据类型"
+        />
+
+    <ListPreference
+        android:key="UseCustomerIP"
+        android:title="选择使用的服务器"
+        />
+
+    <ListPreference
+        android:key="PaySystemType"
+        android:title="选择支付系统类型"
+        />
+
+    <ListPreference
+        android:key="RefundAdressSelect"
+        android:title="选择退款地址（不使用主板支付系统）"
+        />
+
+    <ListPreference
+        android:key="TcnCustomer"
+        android:title="选择客户"
+        />
+
+    <ListPreference
+        android:key="KeySlotDisplayType"
+        android:title="选择按键对应"
+        />
+
+    <ListPreference
+        android:key="ICCardType"
+        android:title="选择手牌类型"
+        />
+
+    <ListPreference
+        android:key="RemoteAdSysType"
+        android:title="远程广告系统类型"
+        />
+
+    <ListPreference
+        android:key="UploadLogType"
+        android:title="后台审计时上传日志（慎选）"
+        />
+
+    <ListPreference
+        android:key="PayOrderReportType"
+        android:title="使用上报订单类型"
+        />
+</PreferenceScreen>

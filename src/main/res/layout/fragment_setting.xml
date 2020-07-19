@@ -1,0 +1,935 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#E9F7FF"
+    android:orientation="vertical"
+    android:paddingLeft="40dp"
+    android:paddingRight="40dp"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    tools:context="com.example.myapplication.fragment.fragment.SettingFragment">
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <!--选择条目-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:gravity="center">
+
+                <TextView
+                    android:id="@+id/tv_machineMessage"
+                    android:layout_width="170dp"
+                    android:layout_height="50dp"
+                    android:background="#76c5f0"
+                    android:gravity="center"
+                    android:text="设备信息"
+                    android:textColor="@color/white"
+                    android:textSize="26dp" />
+
+                <TextView
+                    android:id="@+id/tv_daiJiManage"
+                    android:layout_width="170dp"
+                    android:layout_height="50dp"
+                    android:background="#fff"
+                    android:gravity="center"
+                    android:text="待机页管理"
+                    android:textColor="@color/main_top_tab_color"
+                    android:textSize="26dp" />
+
+                <TextView
+                    android:id="@+id/tv_shopManage"
+                    android:layout_width="170dp"
+                    android:layout_height="50dp"
+                    android:background="#fff"
+                    android:gravity="center"
+                    android:text="销售页管理"
+                    android:textColor="@color/main_top_tab_color"
+                    android:textSize="26dp" />
+
+                <TextView
+                    android:id="@+id/tv_serialPort"
+                    android:layout_width="170dp"
+                    android:layout_height="50dp"
+                    android:background="#fff"
+                    android:gravity="center"
+                    android:text="串口设置"
+                    android:textColor="@color/main_top_tab_color"
+                    android:textSize="26dp" />
+
+                <TextView
+                    android:id="@+id/tv_payment"
+                    android:layout_width="170dp"
+                    android:layout_height="50dp"
+                    android:background="#fff"
+                    android:gravity="center"
+                    android:text="支付方式设置"
+                    android:textColor="@color/main_top_tab_color"
+                    android:textSize="26dp" />
+            </LinearLayout>
+
+            <!--设备信息-->
+            <LinearLayout
+                android:id="@+id/ll_machine"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="80dp"
+                android:orientation="vertical"
+                android:visibility="visible">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="设备编号："
+                        android:textColor="#2c2c2c"
+                        android:textSize="26dp" />
+
+                    <TextView
+                        android:id="@+id/tv_machineNum"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="1234567890000"
+                        android:textColor="#2c2c2c"
+                        android:textSize="26dp" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="25dp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="设备名称："
+                        android:textColor="#2c2c2c"
+                        android:textSize="26dp" />
+
+                    <TextView
+                        android:id="@+id/tv_machineName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="测试"
+                        android:textColor="#2c2c2c"
+                        android:textSize="26dp" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="25dp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="设备地址："
+                        android:textColor="#2c2c2c"
+                        android:textSize="26dp" />
+
+                    <TextView
+                        android:id="@+id/tv_address"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="北京市"
+                        android:textColor="#2c2c2c"
+                        android:textSize="26dp" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="25dp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="货道型号："
+                        android:textColor="#2c2c2c"
+                        android:textSize="26dp" />
+
+                    <TextView
+                        android:id="@+id/tv_aisleModel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="玻璃门"
+                        android:textColor="#2c2c2c"
+                        android:textSize="26dp" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="25dp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="运营方式："
+                        android:textColor="#2c2c2c"
+                        android:textSize="26dp" />
+
+                    <TextView
+                        android:id="@+id/tv_operateWay"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="加盟"
+                        android:textColor="#2c2c2c"
+                        android:textSize="26dp" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="25dp" />
+
+                <LinearLayout
+                    android:layout_marginTop="100dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center">
+                    <Button
+                        android:id="@+id/btn_return"
+                        android:layout_width="300dp"
+                        android:layout_height="70dp"
+                        android:background="@drawable/shape_76c5f0_1"
+                        android:text="返回待机页"
+                        android:textColor="#fff"
+                        android:textSize="28dp" />
+
+                    <Button
+                        android:id="@+id/btn_closeApp"
+                        android:layout_width="300dp"
+                        android:layout_height="70dp"
+                        android:layout_marginLeft="100dp"
+                        android:background="@drawable/shape_76c5f0_1"
+                        android:text="关闭app"
+                        android:textColor="#fff"
+                        android:textSize="28dp" />
+                </LinearLayout>
+            </LinearLayout>
+            <!--待机页管理-->
+            <LinearLayout
+                android:id="@+id/ll_daiJi"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="50dp"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+                    <!--样式一-->
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:id="@+id/ll_style1"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/shape_biankuang_3baeed_alpha_wu_yuan_jiao">
+
+                            <TextView
+                                android:layout_width="170dp"
+                                android:layout_height="260dp"
+                                android:background="#ffff"
+                                android:gravity="center"
+                                android:text="图"
+                                android:textColor="#2c2c2c"
+                                android:textSize="25dp" />
+                        </LinearLayout>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="20dp"
+                            android:gravity="center"
+                            android:text="样式一"
+                            android:textColor="#2c2c2c"
+                            android:textSize="25dp" />
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="50dp"
+                        android:layout_height="match_parent" />
+                    <!--样式二-->
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:id="@+id/ll_style2"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/shape_biankuang_wu_se_alpha_wu_yuan_jiao"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="170dp"
+                                android:layout_height="130dp"
+                                android:background="#ECECEC"
+                                android:gravity="center"
+                                android:text="视频"
+                                android:textColor="#2c2c2c"
+                                android:textSize="25dp" />
+
+                            <TextView
+                                android:layout_width="170dp"
+                                android:layout_height="130dp"
+                                android:background="#fff"
+                                android:gravity="center"
+                                android:text="图"
+                                android:textColor="#2c2c2c"
+                                android:textSize="25dp" />
+                        </LinearLayout>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="20dp"
+                            android:gravity="center"
+                            android:text="样式二"
+                            android:textColor="#2c2c2c"
+                            android:textSize="25dp" />
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="50dp"
+                        android:layout_height="match_parent" />
+                    <!--样式三-->
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:id="@+id/ll_style3"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/shape_biankuang_wu_se_alpha_wu_yuan_jiao"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="170dp"
+                                android:layout_height="130dp"
+                                android:background="#fff"
+                                android:gravity="center"
+                                android:text="图"
+                                android:textColor="#2c2c2c"
+                                android:textSize="25dp" />
+
+                            <TextView
+                                android:layout_width="170dp"
+                                android:layout_height="130dp"
+                                android:background="#ECECEC"
+                                android:gravity="center"
+                                android:text="视频"
+                                android:textColor="#2c2c2c"
+                                android:textSize="25dp" />
+                        </LinearLayout>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="20dp"
+                            android:gravity="center"
+                            android:text="样式三"
+                            android:textColor="#2c2c2c"
+                            android:textSize="25dp" />
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="50dp"
+                        android:layout_height="match_parent" />
+                    <!--样式四-->
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:id="@+id/ll_style4"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/shape_biankuang_wu_se_alpha_wu_yuan_jiao">
+
+                            <TextView
+                                android:layout_width="170dp"
+                                android:layout_height="260dp"
+                                android:background="#ffff"
+                                android:gravity="center"
+                                android:text="视频"
+                                android:textColor="#2c2c2c"
+                                android:textSize="25dp" />
+                        </LinearLayout>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="20dp"
+                            android:gravity="center"
+                            android:text="样式四"
+                            android:textColor="#2c2c2c"
+                            android:textSize="25dp" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/btn_next"
+                    android:layout_width="580dp"
+                    android:layout_height="70dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="100dp"
+                    android:background="@drawable/shape_76c5f0_1"
+                    android:text="确认"
+                    android:textColor="#fff"
+                    android:textSize="28dp" />
+            </LinearLayout>
+            <!--销售页管理-->
+            <LinearLayout
+                android:id="@+id/ll_shopping"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="50dp"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:visibility="visible">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center">
+                    <!--样式一-->
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:id="@+id/ll_style_1"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/shape_biankuang_3baeed_alpha_wu_yuan_jiao">
+
+                            <TextView
+                                android:layout_width="170dp"
+                                android:layout_height="260dp"
+                                android:background="#ffff"
+                                android:gravity="center"
+                                android:text="内容"
+                                android:textColor="#2c2c2c"
+                                android:textSize="25dp" />
+                        </LinearLayout>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="20dp"
+                            android:gravity="center"
+                            android:text="样式一"
+                            android:textColor="#2c2c2c"
+                            android:textSize="25dp" />
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="50dp"
+                        android:layout_height="match_parent" />
+                    <!--样式二-->
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:id="@+id/ll_style_2"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/shape_biankuang_wu_se_alpha_wu_yuan_jiao"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="170dp"
+                                android:layout_height="130dp"
+                                android:background="#ECECEC"
+                                android:gravity="center"
+                                android:text="视频"
+                                android:textColor="#2c2c2c"
+                                android:textSize="25dp" />
+
+                            <TextView
+                                android:id="@+id/textView2"
+                                android:layout_width="170dp"
+                                android:layout_height="130dp"
+                                android:background="#fff"
+                                android:gravity="center"
+                                android:text="内容"
+                                android:textColor="#2c2c2c"
+                                android:textSize="25dp" />
+                        </LinearLayout>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="20dp"
+                            android:gravity="center"
+                            android:text="样式二"
+                            android:textColor="#2c2c2c"
+                            android:textSize="25dp" />
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="50dp"
+                        android:layout_height="match_parent" />
+                    <!--样式三-->
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:id="@+id/ll_style_3"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/shape_biankuang_wu_se_alpha_wu_yuan_jiao"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="170dp"
+                                android:layout_height="130dp"
+                                android:background="#ECECEC"
+                                android:gravity="center"
+                                android:text="图片"
+                                android:textColor="#2c2c2c"
+                                android:textSize="25dp" />
+
+                            <TextView
+                                android:layout_width="170dp"
+                                android:layout_height="130dp"
+                                android:background="#fff"
+                                android:gravity="center"
+                                android:text="内容"
+                                android:textColor="#2c2c2c"
+                                android:textSize="25dp" />
+                        </LinearLayout>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="20dp"
+                            android:gravity="center"
+                            android:text="样式三"
+                            android:textColor="#2c2c2c"
+                            android:textSize="25dp" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp" />
+                <!--返回待机页时间设置-->
+                <LinearLayout
+                    android:layout_width="620dp"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="50dp"
+                        android:gravity="center"
+                        android:text="返回待机页时间："
+                        android:textColor="#333"
+                        android:textSize="25dp" />
+
+                    <EditText
+                        android:id="@+id/et_returnTime"
+                        android:layout_width="wrap_content"
+                        android:layout_height="50dp"
+                        android:background="@null"
+                        android:hint="请输入"
+                        android:inputType="number"
+                        android:text=""
+                        android:textSize="25dp" />
+
+                    <TextView
+                        android:id="@+id/tv_s"
+                        android:layout_width="wrap_content"
+                        android:layout_height="50dp"
+                        android:gravity="center"
+                        android:text="/s"
+                        android:textColor="#333"
+                        android:textSize="25dp" />
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/btn_next1"
+                    android:layout_width="580dp"
+                    android:layout_height="70dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="100dp"
+                    android:background="@drawable/shape_76c5f0_1"
+                    android:text="确认"
+                    android:textColor="#fff"
+                    android:textSize="28dp" />
+            </LinearLayout>
+            <!--串口设置-->
+            <LinearLayout
+                android:id="@+id/ll_serialPort"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="80dp"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:visibility="gone">
+                <!--读卡器串口-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center">
+
+                    <TextView
+                        android:id="@+id/tv_serialport"
+                        android:layout_width="320dp"
+                        android:layout_height="80dp"
+                        android:background="@drawable/shape_76c5f0_1"
+                        android:gravity="center"
+                        android:text="设置读卡器串口"
+                        android:textColor="#333"
+                        android:textSize="30dp" />
+                    <TextView
+                        android:layout_marginLeft="20dp"
+                        android:id="@+id/tv_spZhi"
+                        android:layout_width="180dp"
+                        android:layout_height="80dp"
+                        android:gravity="center"
+                        android:text="/dev/ttys"
+                        android:textColor="#333"
+                        android:textSize="30dp" />
+                    <Button
+                        android:id="@+id/btn_testSerial"
+                        android:layout_width="280dp"
+                        android:layout_height="80dp"
+                        android:layout_marginLeft="20dp"
+                        android:background="@drawable/shape_76c5f0_1"
+                        android:text="测试读卡器串口"
+                        android:textSize="26dp" />
+                </LinearLayout>
+                <!--现金模块串口-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:gravity="center">
+
+                    <TextView
+                        android:id="@+id/tv_money"
+                        android:layout_width="320dp"
+                        android:layout_height="80dp"
+                        android:background="@drawable/shape_76c5f0_1"
+                        android:gravity="center"
+                        android:text="设置现金模块串口"
+                        android:textColor="#333"
+                        android:textSize="30dp" />
+                    <TextView
+                        android:layout_marginLeft="20dp"
+                        android:id="@+id/tv_mZhi"
+                        android:layout_width="180dp"
+                        android:layout_height="80dp"
+                        android:gravity="center"
+                        android:text="/dev/ttys"
+                        android:textColor="#333"
+                        android:textSize="30dp" />
+                    <Button
+                        android:id="@+id/btn_testMoney"
+                        android:layout_width="280dp"
+                        android:layout_height="80dp"
+                        android:layout_marginLeft="20dp"
+                        android:background="@drawable/shape_76c5f0_1"
+                        android:text="测试现金模块串口"
+                        android:textSize="26dp" />
+                </LinearLayout>
+                <!--主货柜货道串口-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:gravity="center">
+
+                    <TextView
+                        android:id="@+id/tv_aisleTest"
+                        android:layout_width="320dp"
+                        android:layout_height="80dp"
+                        android:background="@drawable/shape_76c5f0_1"
+                        android:gravity="center"
+                        android:text="设置主货柜货道串口"
+                        android:textColor="#333"
+                        android:textSize="30dp" />
+                    <TextView
+                        android:layout_marginLeft="20dp"
+                        android:id="@+id/tv_atZhi"
+                        android:layout_width="180dp"
+                        android:layout_height="80dp"
+                        android:gravity="center"
+                        android:text="/dev/ttys"
+                        android:textColor="#333"
+                        android:textSize="30dp" />
+                    <Button
+                        android:id="@+id/btn_testAisle"
+                        android:layout_width="280dp"
+                        android:layout_height="80dp"
+                        android:layout_marginLeft="20dp"
+                        android:background="@drawable/shape_76c5f0_1"
+                        android:text="测试主货柜货道串口"
+                        android:textSize="26dp" />
+                </LinearLayout>
+                <!--副货柜1货道串口-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:gravity="center">
+
+                    <TextView
+                        android:id="@+id/tv_aisleTest_1"
+                        android:layout_width="320dp"
+                        android:layout_height="80dp"
+                        android:background="@drawable/shape_76c5f0_1"
+                        android:gravity="center"
+                        android:text="设置副货柜1货道串口"
+                        android:textColor="#333"
+                        android:textSize="30dp" />
+                    <TextView
+                        android:layout_marginLeft="20dp"
+                        android:id="@+id/tv_atZhi_1"
+                        android:layout_width="180dp"
+                        android:layout_height="80dp"
+                        android:gravity="center"
+                        android:text="/dev/ttys"
+                        android:textColor="#333"
+                        android:textSize="30dp" />
+                    <Button
+                        android:id="@+id/btn_testAisle_1"
+                        android:layout_width="280dp"
+                        android:layout_height="80dp"
+                        android:layout_marginLeft="20dp"
+                        android:background="@drawable/shape_76c5f0_1"
+                        android:text="测试副货柜1货道串口"
+                        android:textSize="26dp" />
+                </LinearLayout>
+                <!--副货柜2货道串口-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:gravity="center">
+
+                    <TextView
+                        android:id="@+id/tv_aisleTest_2"
+                        android:layout_width="320dp"
+                        android:layout_height="80dp"
+                        android:background="@drawable/shape_76c5f0_1"
+                        android:gravity="center"
+                        android:text="设置副货柜2货道串口"
+                        android:textColor="#333"
+                        android:textSize="30dp" />
+                    <TextView
+                        android:layout_marginLeft="20dp"
+                        android:id="@+id/tv_atZhi_2"
+                        android:layout_width="180dp"
+                        android:layout_height="80dp"
+                        android:gravity="center"
+                        android:text="/dev/ttys"
+                        android:textColor="#333"
+                        android:textSize="30dp" />
+                    <Button
+                        android:id="@+id/btn_testAisle_2"
+                        android:layout_width="280dp"
+                        android:layout_height="80dp"
+                        android:layout_marginLeft="20dp"
+                        android:background="@drawable/shape_76c5f0_1"
+                        android:text="测试副货柜2货道串口"
+                        android:textSize="26dp" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp" />
+            </LinearLayout>
+            <!--支付方式设置-->
+            <LinearLayout
+                android:id="@+id/ll_payment"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="80dp"
+                android:gravity="center_vertical"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <Switch
+                    android:id="@+id/switch_xianJin"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:switchMinWidth="80dp"
+                    android:text="是否支持现金支付"
+                    android:textColor="#333"
+                    android:textOff="    "
+                    android:textOn="    "
+                    android:textSize="35dp"
+                    android:thumb="@drawable/thumb"
+                    android:track="@drawable/track" />
+
+                <Switch
+                    android:id="@+id/switch_wechat"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="30dp"
+                    android:switchMinWidth="80dp"
+                    android:text="是否支持微信支付"
+                    android:textColor="#333"
+                    android:textOff="    "
+                    android:textOn="    "
+                    android:textSize="35dp"
+                    android:thumb="@drawable/thumb"
+                    android:track="@drawable/track" />
+
+                <Switch
+                    android:id="@+id/switch_alipay"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="30dp"
+                    android:switchMinWidth="80dp"
+                    android:text="是否支持支付宝支付"
+                    android:textColor="#333"
+                    android:textOff="    "
+                    android:textOn="    "
+                    android:textSize="35dp"
+                    android:thumb="@drawable/thumb"
+                    android:track="@drawable/track" />
+
+                <Switch
+                    android:id="@+id/switch_unionpay"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="30dp"
+                    android:switchMinWidth="80dp"
+                    android:text="是否支持银联二维码支付"
+                    android:textColor="#333"
+                    android:textOff="    "
+                    android:textOn="    "
+                    android:textSize="35dp"
+                    android:thumb="@drawable/thumb"
+                    android:track="@drawable/track" />
+                <Switch
+                    android:id="@+id/switch_kaquan"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="30dp"
+                    android:switchMinWidth="80dp"
+                    android:text="是否支持卡券支付"
+                    android:textColor="#333"
+                    android:textOff="    "
+                    android:textOn="    "
+                    android:textSize="35dp"
+                    android:thumb="@drawable/thumb"
+                    android:track="@drawable/track" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+                <!--图片-->
+                <LinearLayout
+                    android:id="@+id/ll_tu"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="50dp"
+                    android:orientation="vertical"
+                    android:visibility="gone">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="图片："
+                        android:textColor="#2c2c2c"
+                        android:textSize="25dp" />
+
+                    <com.example.myapplication.util.MyGridView
+                        android:id="@+id/gv0"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:columnWidth="150dp"
+                        android:gravity="center"
+                        android:numColumns="6"
+                        android:stretchMode="spacingWidthUniform" />
+                </LinearLayout>
+                <!--视频-->
+                <LinearLayout
+                    android:id="@+id/ll_video"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="30dp"
+                    android:orientation="vertical"
+                    android:visibility="gone">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="视频："
+                        android:textColor="#2c2c2c"
+                        android:textSize="25dp" />
+
+                    <com.example.myapplication.util.MyGridView
+                        android:id="@+id/gv1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:columnWidth="150dp"
+                        android:gravity="center"
+                        android:numColumns="6"
+                        android:stretchMode="spacingWidthUniform" />
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/btn_Confirm"
+                    android:layout_width="580dp"
+                    android:layout_height="70dp"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="40dp"
+                    android:layout_marginTop="100dp"
+                    android:background="@drawable/shape_76c5f0_1"
+                    android:text="确认"
+                    android:textColor="#fff"
+                    android:textSize="28dp"
+                    android:visibility="gone" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

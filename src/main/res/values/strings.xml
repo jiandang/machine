@@ -1,0 +1,229 @@
+<resources>
+    <string name="app_name">My Application</string>
+
+    <string name="app_name1">Serial Port API sample</string>
+    <string name="about_msg">
+Serial Port API sample v1.1\n
+\n
+This program is the sample application provided with project android-serialport-api.\n
+\n
+More information and bug report on [http://code.google.com/p/android-serialport-api]\n
+\n
+Copyright 2010-2011 Cedric Priscal\n
+\n
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at\n
+\n
+http://www.apache.org/licenses/LICENSE-2.0\n
+\n
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.\n
+	</string>
+    <!--<string name="error_configuration">Please configure your serial port first.</string>-->
+    <!--<string name="error_security">You do not have read/write permission to the serialport.</string>-->
+    <!--<string name="error_unknown">The serial port can not be opened for an unknown reason.</string>-->
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <!--<string name="app_name">弹簧机驱动测试工具</string>-->
+    <string name="error_configuration">请先配置串口</string>
+    <string name="error_seriport">串口通讯出错</string>
+    <string name="error_security">没有读写权限</string>
+    <string name="serial_port_setup">串口设置</string>
+    <string name="back">返回</string>
+    <string name="notify_shipment_success">出货成功</string>
+    <string name="notify_receive_goods">请领取您的商品</string>
+    <string name="notify_shipment_fail">出货失败</string>
+    <string name="notify_contact_merchant">请联系商家</string>
+    <string name="error_unknown">The serial port can not be opened for an unknown reason.</string>
+    <string name="serial_port_motherboard_serial">主板串口</string>
+    <string name="serial_port_motherboard_baud_rate">主板波特率</string>
+    <string name="menu_drop_sensor_whole">整机掉货检测</string>
+    <string name="notify_shipsuc_rec_notify">出货成功，请领取您的商品！</string>
+    <string name="notify_fail_contact">出货失败，请联系商家！</string>
+    <string name="drive_spring_set">弹簧机设置</string>
+    <string name="drive_lift_set">升降机设置</string>
+    <string name="drive_lattice_set">格子机设置</string>
+    <string name="drive_no_goods">没有货物</string>
+    <string name="drive_have_goods">有货物</string>
+    <string name="drive_unknow_err">未知错误</string>
+    <string name="drive_light_blocked">被挡住</string>
+    <string name="drive_light_not_blocked">没被挡住</string>
+    <string name="drive_check_seriport">请检查串口通讯！</string>
+    <string name="drive_slot_testing">货道测试中</string>
+    <string name="drive_tips_have_fault">有故障</string>
+    <string name="drive_tips_no_fault">无故障</string>
+    <string name="drive_tips_clean_fault_success">清除故障成功</string>
+    <string name="drive_setting">设置中</string>
+    <string name="drive_tips_input_slotno">请输入货道号！</string>
+    <string name="drive_tips_select_cabinetno">请选择柜号</string>
+    <string name="lift_tips_select_group_no">请选择组号！</string>
+    <string name="drive_modify_ask">确定修改？</string>
+    <string name="backgroound_ensure">确定</string>
+    <string name="backgroound_cancel">取消</string>
+    <string name="drive_set">设置</string>
+    <string name="drive_query">查询</string>
+    <string name="drive_clean">清除</string>
+    <string name="drive_clean_fault">清除驱动板故障</string>
+    <string name="drive_query_slot">查询货道(1-80)</string>
+    <string name="drive_query_fault">查询驱动板故障</string>
+    <string name="drive_start">开始</string>
+    <string name="drive_success">成功</string>
+    <string name="drive_errcode_normal">正常</string>
+    <string name="drive_errcode_255">检测不到该货道。</string>
+    <string name="drive_errcode">故障代码:</string>
+    <string name="spring_self_check">自检</string>
+    <string name="spring_reset">复位</string>
+    <string name="spring_double_ask">确定与下一个货道合并为一个货道？</string>
+    <string name="spring_set_slot_spring">设置为弹簧货道(1-80)</string>
+    <string name="spring_set_slot_belts">设置为皮带货道(1-80)</string>
+    <string name="spring_set_slot_spring_all">全部设置为弹簧货道(慎改！)</string>
+    <string name="spring_set_slot_belts_all">全部设置为皮带货道(慎改！)</string>
+    <string name="spring_set_single_slot">拆分为单货道(1-80)</string>
+    <string name="spring_set_single">拆分</string>
+    <string name="spring_set_double_slot">与下一货道合并为双货道(1-80)</string>
+    <string name="spring_set_double">合并</string>
+    <string name="spring_set_single_slot_all">全部设置为单货道(慎改！)</string>
+    <string name="spring_test_mode">测试模式(断电才能停止)</string>
+    <string name="spring_errcode_1">光电开关在没有发射的情况下也有信号输出</string>
+    <string name="spring_errcode_2">发射有改变的时候也没有信号输出</string>
+    <string name="spring_errcode_3">出货时一直有输出信号不能判断好坏</string>
+    <string name="spring_errcode_4">没有检测到出货</string>
+    <string name="spring_errcode_16">P型MOS管有短路</string>
+    <string name="spring_errcode_17">P型MOS管有短路,光电开关在没有发射的情况下也有信号输出.</string>
+    <string name="spring_errcode_18">P型MOS管有短路,发射有改变的时候 也没有信号输出.</string>
+    <string name="spring_errcode_19">P型MOS管有短路,出货时一直有输出信号 不能判断好坏.</string>
+    <string name="spring_errcode_32">N型MOS管有短路.</string>
+    <string name="spring_errcode_33">N型MOS管有短路; 光电开关在没有发射的情况下也有信号输出.</string>
+    <string name="spring_errcode_34">N型MOS管有短路,发射有改变的时候 也没有信号输出.</string>
+    <string name="spring_errcode_35">N型MOS管有短路,出货时一直有输出信号 不能判断好坏.</string>
+    <string name="spring_errcode_48">电机短路</string>
+    <string name="spring_errcode_49">电机短路,光电开关在没有发射的情况下也有信号输出.</string>
+    <string name="spring_errcode_50">电机短路,发射有改变的时候 也没有信号输出.</string>
+    <string name="spring_errcode_51">电机短路,出货时一直有输出信号,不能判断好坏.</string>
+    <string name="spring_errcode_64">电机断路</string>
+    <string name="spring_errcode_65">电机断路,光电开关在没有发射的情况下也有信号输出.</string>
+    <string name="spring_errcode_66">电机断路,发射有改变的时候, 也没有信号输出.</string>
+    <string name="spring_errcode_67">电机断路,出货时一直有输出信号 不能判断好坏.</string>
+    <string name="spring_errcode_80">AM出错,电机转动超时。</string>
+    <string name="spring_errcode_81">在规定时间内没有接收到回复数据,表明驱动板工作不正常或者与驱动板连接有问题。</string>
+    <string name="spring_errcode_82">接收到数据不完整。</string>
+    <string name="spring_errcode_83">校验不正确。</string>
+    <string name="spring_errcode_84">地址不正确。</string>
+    <string name="spring_errcode_86">货道不存在。</string>
+    <string name="spring_errcode_87">返回故障代码有错超出范围。</string>
+    <string name="spring_errcode_90">连续多少次转动正常但没检测到商品售出。</string>
+    <string name="spring_errcode_91">其它故障。</string>
+
+    <string name="ui_base_back">返回</string>
+    <string name="ui_base_exit">退出系统</string>
+    <string name="background_menu_settings">菜单设置</string>
+    <string name="background_menu_set_tool">设置工具</string>
+    <string name="background_menu_func_set">功能设置</string>
+    <string name="background_menu_drop_sensor_whole">整机掉货检测</string>
+    <string name="background_menu_enable_bill_escrow">纸币可以退回</string>
+    <string name="background_menu_enable_change">硬币可以找零</string>
+    <string name="background_menu_give_change_direct">直接找零</string>
+    <string name="background_menu_glass_demist_enable">玻璃除雾</string>
+
+    <string name="background_drive_spring_set">弹簧机设置</string>
+    <string name="background_drive_lift_set">升降机设置</string>
+    <string name="background_drive_lattice_set">格子机设置</string>
+    <string name="background_drive_coff_set">咖啡机设置</string>
+    <string name="background_drive_snake_set">蛇形机设置</string>
+    <string name="background_drive_light_set">灯条设置</string>
+    <string name="background_drive_setting">设置中</string>
+    <string name="background_drive_tips_input_slotno">请输入货道号！</string>
+    <string name="background_drive_tips_select_cabinetno">请选择柜号</string>
+    <string name="background_drive_modify_ask">确定修改？</string>
+    <string name="background_drive_set">设置</string>
+    <string name="background_drive_query">查询</string>
+    <string name="background_drive_clean">清除</string>
+    <string name="background_drive_clean_fault">清除驱动板故障</string>
+    <string name="background_drive_query_slot">查询货道</string>
+    <string name="background_drive_query_fault">查询驱动板故障</string>
+    <string name="background_spring_self_check">自检</string>
+    <string name="background_spring_reset">复位</string>
+    <string name="background_spring_set_heat_cool">打开或关闭制冷（加热）</string>
+    <string name="background_spring_set_temp">制冷（加热）的目标温度</string>
+    <string name="background_spring_glass_heat_open">玻璃加热打开</string>
+    <string name="background_spring_glass_heat_close">玻璃加热关闭</string>
+    <string name="background_spring_led_open">打开LED灯条</string>
+    <string name="background_spring_led_close">关闭LED灯条</string>
+    <string name="background_spring_buzzer_open">打开蜂鸣器</string>
+    <string name="background_spring_buzzer_close">关闭蜂鸣器</string>
+    <string name="background_spring_double_ask">确定与下一个货道合并为一个货道？</string>
+    <string name="background_spring_set_slot_spring">设置为弹簧货道(慎改！)</string>
+    <string name="background_spring_set_slot_belts">设置为皮带货道(慎改！)</string>
+    <string name="background_spring_set_slot_spring_all">全部设置为弹簧货道(慎改！)</string>
+    <string name="background_spring_set_slot_belts_all">全部设置为皮带货道(慎改！)</string>
+    <string name="background_spring_set_single_slot">拆分为单货道(慎改！)</string>
+    <string name="background_spring_set_single">拆分</string>
+    <string name="background_spring_set_double_slot">与下一货道合并为双货道(慎改！)</string>
+    <string name="background_spring_set_double">合并</string>
+    <string name="background_spring_set_single_slot_all">全部设置为单货道(慎改！)</string>
+    <string name="background_spring_test_mode">测试模式(断电才能停止)</string>
+
+    <string name="background_backgroound_ensure">确定</string>
+    <string name="background_backgroound_cancel">取消</string>
+
+    <string name="background_lift_tips_select_control_action">请选择控制动作！</string>
+    <string name="background_lift_tips_select_query_parameters">请选择查询参数！</string>
+    <string name="background_lift_tips_select_set_parameters">请选择要设置的参数！</string>
+    <string name="background_lift_tips_set_value_canont_empty">设置的值不能为空！</string>
+
+    <string name="background_notify_contact_merchant">请联系商家</string>
+    <string name="background_drive_tips_clean_fault_success">清除故障成功</string>
+    <string name="background_drive_tips_no_fault">无故障</string>
+    <string name="background_drive_tips_have_fault">有故障</string>
+
+    <string name="ui_base_notify_coin_back">正在退币</string>
+    <string name="ui_base_notify_coinback_success">退币成功</string>
+    <string name="ui_base_notify_coinback_fail">退币失败</string>
+
+    <string name="ui_base_notify_slot">货道: </string>
+    <string name="ui_base_notify_not_open">暂未开通</string>
+    <string name="ui_base_notify_loading">正在加载</string>
+    <string name="ui_base_notify_load_fail">加载失败</string>
+    <string name="ui_base_notify_invalid_slot">无效货道</string>
+    <string name="ui_base_notify_sys_busy">系统忙</string>
+    <string name="ui_base_notify_slot_faultSlot">故障货道</string>
+    <string name="ui_base_notify_slot_fault">故障货道: </string>
+    <string name="ui_base_notify_slot_code">故障代码: </string>
+    <string name="ui_base_notify_slot_err">故障: </string>
+    <string name="ui_base_notify_sold_out">该商品售空,请选择其他商品！</string>
+    <string name="ui_base_notify_select_other">请选择其他商品！</string>
+    <string name="ui_base_aisle_name">货道号</string>
+    <string name="ui_base_notify_shipping">正在出货</string>
+    <string name="ui_base_notify_shipping1">支付成功，正在出货</string>
+    <string name="ui_base_notify_shipment_fail">出货失败</string>
+    <string name="ui_base_notify_contact_merchant">请联系商家</string>
+    <string name="ui_base_notify_fail_contact">出货失败，请联系商家！</string>
+    <string name="ui_base_notify_shipment_success">出货成功</string>
+    <string name="ui_base_notify_receive_goods">请领取您的商品</string>
+    <string name="ui_base_notify_shipsuc_rec_notify">出货成功，请领取您的商品！</string>
+    <string name="ui_base_notify_receive_goods_first">请取走商品</string>
+
+    <string name="background_func_coin_open_set">设置接收硬币类型(填满16位,1表示接收,0表示禁止)</string>
+    <string name="background_func_paper_open_set">设置接收纸币类型(填满16位,1表示接收,0表示禁止)</string>
+    <string name="background_func_paper_coin_open_tips">只能填1或者0，请填满16个</string>
+    <string name="background_func_coin_prestorage">钱币预存</string>
+    <string name="background_menu_preparemoney_please">请预装钱币</string>
+    <string name="background_menu_preparemoney_end">预装结束</string>
+    <string name="background_bill_type_enable_all">接收全部纸币币种</string>
+    <string name="background_bill_type_disable_all">禁止全部纸币币种</string>
+    <string name="background_coin_type_enable_all">接收全部硬币币种</string>
+    <string name="background_coin_type_disable_all">禁止全部硬币币种</string>
+    <string name="background_menu_preparemoney_clean">预装清零</string>
+    <string name="ui_base_menu_save">保存</string>
+    <string name="ui_base_begin">开始</string>
+    <string name="ui_base_backgroound_ensure">确认</string>
+    <string name="ui_base_backgroound_cancel">取消</string>
+    <string name="ui_base_end">结束</string>
+    <string name="ui_base_saving">保存</string>
+</resources>

@@ -1,0 +1,139 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#E9F7FF"
+    android:orientation="vertical"
+    tools:context="com.example.myapplication.fragment.fragment.SellNumFragment">
+
+
+    <LinearLayout
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+        <TextView
+            android:text="查询日期："
+            android:textSize="26dp"
+            android:textColor="#333"
+            android:gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent" />
+        <TextView
+            android:id="@+id/tv_date"
+            android:text="2018-12-06"
+            android:textSize="26dp"
+            android:textColor="#333"
+            android:gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent" />
+        <TextView
+            android:text="-"
+            android:textSize="26dp"
+            android:textColor="#333"
+            android:gravity="center"
+            android:layout_width="30dp"
+            android:layout_height="match_parent" />
+        <TextView
+            android:id="@+id/tv_date1"
+            android:text="2018-12-06"
+            android:textSize="26dp"
+            android:textColor="#333"
+            android:gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent" />
+        <Button
+            android:layout_marginLeft="20dp"
+            android:id="@+id/btn_query"
+            android:textSize="26dp"
+            android:layout_width="120dp"
+            android:layout_height="50dp"
+            android:textColor="#76c5f0"
+            android:background="@drawable/shape_biankuang_3baeed_tou"
+            android:text="查询" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="30dp"
+        android:orientation="vertical"
+        android:visibility="visible">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp">
+            <TextView
+                android:gravity="center"
+                android:layout_weight="1.5"
+                android:text="名次"
+                android:background="#76c5f0"
+                android:textSize="26dp"
+                android:textColor="@color/white"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+            <View
+                android:layout_width="4dp"
+                android:layout_height="match_parent"/>
+            <TextView
+                android:gravity="center"
+                android:layout_weight="1.3"
+                android:text="商品名称"
+                android:background="#76c5f0"
+                android:textSize="26dp"
+                android:textColor="@color/white"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+            <View
+                android:layout_width="4dp"
+                android:layout_height="match_parent"/>
+            <TextView
+                android:gravity="center"
+                android:layout_weight="1.5"
+                android:text="销售数量"
+                android:background="#76c5f0"
+                android:textSize="26dp"
+                android:textColor="@color/white"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+            <!--<View-->
+                <!--android:layout_width="4dp"-->
+                <!--android:layout_height="match_parent"/>-->
+            <!--<TextView-->
+                <!--android:gravity="center"-->
+                <!--android:layout_weight="1.3"-->
+                <!--android:text="商品名称(月)"-->
+                <!--android:background="#76c5f0"-->
+                <!--android:textSize="26dp"-->
+                <!--android:textColor="@color/white"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="match_parent" />-->
+            <!--<View-->
+                <!--android:layout_width="4dp"-->
+                <!--android:layout_height="match_parent"/>-->
+            <!--<TextView-->
+                <!--android:gravity="center"-->
+                <!--android:layout_weight="1.5"-->
+                <!--android:text="月销售数量"-->
+                <!--android:background="#76c5f0"-->
+                <!--android:textSize="26dp"-->
+                <!--android:textColor="@color/white"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="match_parent" />-->
+        </LinearLayout>
+        <com.example.myapplication.util.PageRecyclerView
+            android:id="@+id/cusom_swipe_view1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <com.example.myapplication.util.PageIndicatorView
+            android:id="@+id/indicator"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="20dp" />
+    </LinearLayout>
+</LinearLayout>

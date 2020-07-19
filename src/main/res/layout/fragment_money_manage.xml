@@ -1,0 +1,175 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#E9F7FF"
+    tools:context="com.example.myapplication.fragment.fragment.MoneyManageFragment"
+    android:orientation="vertical">
+
+
+    <LinearLayout
+        android:layout_marginTop="30dp"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/tv_pay"
+            android:layout_width="180dp"
+            android:layout_height="50dp"
+            android:textSize="26dp"
+            android:background="#76c5f0"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:text="支付管理" />
+        <TextView
+            android:id="@+id/tv_zhaoLing"
+            android:layout_width="180dp"
+            android:layout_height="50dp"
+            android:textSize="26dp"
+            android:background="#fff"
+            android:gravity="center"
+            android:textColor="@color/main_top_tab_color"
+            android:text="找零管理" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_zhiBi"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_height="wrap_content">
+        <TextView
+            android:gravity="center"
+            android:text="纸币："
+            android:textSize="25dp"
+            android:textColor="@color/main_top_tab_color"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="20dp"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/tv5"
+                android:background="@drawable/shape_biankuang_3baeed_wu_yuan_jiao"
+                android:gravity="center"
+                android:text="5元"
+                android:textSize="26dp"
+                android:textColor="@color/main_top_tab_color"
+                android:layout_width="150dp"
+                android:layout_height="60dp" />
+            <View
+                android:layout_width="15dp"
+                android:layout_height="match_parent"/>
+            <TextView
+                android:id="@+id/tv10"
+                android:background="#fff"
+                android:gravity="center"
+                android:text="10元"
+                android:textSize="26dp"
+                android:textColor="@color/main_top_tab_color"
+                android:layout_width="150dp"
+                android:layout_height="60dp" />
+            <View
+                android:layout_width="15dp"
+                android:layout_height="match_parent"/>
+            <TextView
+                android:id="@+id/tv20"
+                android:background="#fff"
+                android:gravity="center"
+                android:text="20元"
+                android:textSize="26dp"
+                android:textColor="@color/main_top_tab_color"
+                android:layout_width="150dp"
+                android:layout_height="60dp" />
+            <View
+                android:layout_width="15dp"
+                android:layout_height="match_parent"/>
+            <TextView
+                android:id="@+id/tv50"
+                android:background="#fff"
+                android:gravity="center"
+                android:text="50元"
+                android:textSize="26dp"
+                android:textColor="@color/main_top_tab_color"
+                android:layout_width="150dp"
+                android:layout_height="60dp" />
+            <View
+                android:layout_width="15dp"
+                android:layout_height="match_parent"/>
+            <TextView
+                android:id="@+id/tv100"
+                android:background="#fff"
+                android:gravity="center"
+                android:text="100元"
+                android:textSize="26dp"
+                android:textColor="@color/main_top_tab_color"
+                android:layout_width="150dp"
+                android:layout_height="60dp" />
+            <View
+                android:layout_width="15dp"
+                android:layout_height="match_parent"/>
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/ll_yingBi"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_height="wrap_content">
+        <TextView
+            android:gravity="center"
+            android:text="硬币："
+            android:textSize="25dp"
+            android:textColor="@color/main_top_tab_color"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="20dp"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/tv0"
+                android:background="@drawable/shape_biankuang_3baeed_wu_yuan_jiao"
+                android:gravity="center"
+                android:text="0.5元"
+                android:textSize="26dp"
+                android:textColor="@color/main_top_tab_color"
+                android:layout_width="150dp"
+                android:layout_height="60dp" />
+            <View
+                android:layout_width="15dp"
+                android:layout_height="match_parent"/>
+            <TextView
+                android:id="@+id/tv1"
+                android:background="#fff"
+                android:gravity="center"
+                android:text="1元"
+                android:textSize="26dp"
+                android:textColor="@color/main_top_tab_color"
+                android:layout_width="150dp"
+                android:layout_height="60dp" />
+
+        </LinearLayout>
+    </LinearLayout>
+    <Button
+        android:id="@+id/btn_confirm"
+        android:layout_width="580dp"
+        android:layout_height="70dp"
+        android:layout_gravity="center"
+        android:background="@drawable/shape_76c5f0_1"
+        android:text="确认"
+        android:textColor="#fff"
+        android:textSize="28dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="100dp" />
+</LinearLayout>

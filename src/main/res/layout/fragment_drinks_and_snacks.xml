@@ -1,0 +1,153 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#E9F7FF"
+    android:orientation="vertical"
+    tools:context="com.example.myapplication.fragment.DrinksAndSnacksFragment">
+
+    <!--<ScrollView-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent">-->
+
+        <!--<LinearLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:orientation="vertical">-->
+
+            <!--商品展示  android:layout_marginTop="50dp"-->
+            <LinearLayout
+                android:id="@+id/ll_shop"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="10dp"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <com.example.myapplication.util.PageRecyclerView
+                    android:id="@+id/cusom_swipe_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+
+                <com.example.myapplication.util.PageIndicatorView
+                    android:id="@+id/indicator"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:layout_marginBottom="20dp" />
+            </LinearLayout>
+
+            <View
+                android:visibility="gone"
+                android:id="@+id/v"
+                android:layout_width="match_parent"
+                android:layout_height="340dp" />
+            <!--支付方式-->
+            <LinearLayout
+                android:gravity="center"
+                android:id="@+id/ll_pay"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:visibility="visible">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:gravity="center_horizontal"
+                    android:text="请选择您的支付方式"
+                    android:textColor="#333"
+                    android:textSize="30dp" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="50dp">
+
+
+                    <com.example.myapplication.util.MyGridView
+                        android:id="@+id/gv"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:columnWidth="180dp"
+                        android:gravity="center"
+                        android:numColumns="3"
+                        android:stretchMode="spacingWidthUniform" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="50dp">
+                    <!--卡券支付-->
+                    <LinearLayout
+                        android:id="@+id/ll_kaquan"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:layout_width="180dp"
+                            android:layout_height="180dp"
+                            android:src="@drawable/kaquan" />
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="20dp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:text="卡券"
+                            android:textColor="#333"
+                            android:textSize="28dp" />
+                    </LinearLayout>
+
+                    <!--<View-->
+                    <!--android:layout_width="210dp"-->
+                    <!--android:layout_height="match_parent" />-->
+                    <!--现金支付-->
+                    <LinearLayout
+                        android:id="@+id/ll_xianJin"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="210dp"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:layout_width="180dp"
+                            android:layout_height="180dp"
+                            android:src="@drawable/xianjinzhifu" />
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="20dp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:text="现金"
+                            android:textColor="#333"
+                            android:textSize="28dp" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/btn_return"
+                    android:layout_width="580dp"
+                    android:layout_height="70dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="50dp"
+                    android:background="@drawable/shape_76c5f0_1"
+                    android:text="返回"
+                    android:textColor="#fff"
+                    android:textSize="28dp" />
+            </LinearLayout>
+        <!--</LinearLayout>-->
+    <!--</ScrollView>-->
+</LinearLayout>

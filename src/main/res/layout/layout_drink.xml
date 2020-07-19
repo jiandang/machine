@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="170dp"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:paddingTop="60dp"
+    android:orientation="vertical">
+    <LinearLayout
+        android:id="@+id/ll_show"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:background="@drawable/shape_ffffff"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <RelativeLayout
+            android:layout_width="170dp"
+            android:layout_height="150dp">
+            <ImageView
+                android:id="@+id/iv_img"
+                android:src="@drawable/bhc"
+                android:layout_width="170dp"
+                android:layout_height="150dp" />
+            <TextView
+                android:id="@+id/tv_huodaoNum"
+                android:textSize="20dp"
+                android:text="102"
+                android:textColor="#000"
+                android:layout_marginRight="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentEnd="true" />
+            <TextView
+                android:id="@+id/tv_soldOut"
+                android:background="#000"
+                android:alpha="0.4"
+                android:text="已售罄"
+                android:textSize="30dp"
+                android:textColor="#76c5f0"
+                android:layout_width="170dp"
+                android:layout_height="150dp" />
+        </RelativeLayout>
+        <LinearLayout
+            android:orientation="vertical"
+            android:background="@drawable/shape_f8f8f8"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_marginTop="4dp"
+                android:layout_marginLeft="5dp"
+                android:id="@+id/tv_name"
+                android:text="255ml统一冰红茶"
+                android:textSize="20dp"
+                android:gravity="center_vertical"
+                android:textColor="#333"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp" />
+            <TextView
+                android:id="@+id/tv_price"
+                android:text="￥10.00"
+                android:textSize="20dp"
+                android:gravity="center"
+                android:textColor="#ff0000"
+                android:layout_width="80dp"
+                android:layout_height="28dp" />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="4dp"/>
+        </LinearLayout>
+    </LinearLayout>
+    <!--<LinearLayout-->
+        <!--android:id="@+id/ll_detail"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:orientation="vertical">-->
+        <!---->
+    <!--</LinearLayout>-->
+    <LinearLayout
+        android:gravity="center"
+        android:layout_marginTop="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="60dp">
+        <Button
+            android:id="@+id/btn_detail"
+            android:textColor="#fff"
+            android:background="@drawable/shape_76c5f0"
+            android:text="宝贝详情"
+            android:layout_width="75dp"
+            android:layout_height="wrap_content" />
+        <View
+            android:layout_width="5dp"
+            android:layout_height="match_parent"/>
+        <Button
+            android:id="@+id/btn_buy"
+            android:textColor="#fff"
+            android:background="@drawable/shape_76c5f0"
+            android:text="立即购买"
+            android:layout_width="75dp"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+</LinearLayout>

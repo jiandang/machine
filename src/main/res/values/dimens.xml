@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
+
+    <dimen name="top_tab_height">50dp</dimen>
+    <dimen name="main_top_tab_text_size">14sp</dimen> <!--48px-->
+    <dimen name="main_line_height">2.7dp</dimen><!--8px-->
+    <dimen name="main_matrix_width">95dp</dimen>
+    <dimen name="text_size">32sp</dimen>
+
+        <dimen name="buttonCornerSize">2dp</dimen>
+        <dimen name="dialog_round_radius">4dp</dimen>
+        <dimen name="smallButtonHeight">32dp</dimen>
+        <dimen name="smallButtonWidth">48dp</dimen>
+        <dimen name="normalButtonHeight">48dp</dimen>
+        <dimen name="normalButtonWidth">80dp</dimen>
+
+
+
+        <dimen name="bigButtonTextSize">18dp</dimen>
+        <dimen name="normalButtonTextSize">16dp</dimen>
+        <dimen name="smallButtonTextSize">14dp</dimen>
+
+
+        <dimen name="ware_grid_img_width">180dp</dimen>
+        <dimen name="ware_grid_img_height">180dp</dimen>
+        <dimen name="ware_img_height">150dp</dimen>
+        <dimen name="ware_img_width">150dp</dimen>
+        <dimen name="small_ware_img_width">100dp</dimen>
+        <dimen name="category_layout_width">120dp</dimen>
+
+
+        <!--app基本的字体大小-->
+        <dimen name="base_text_size">14dp</dimen>
+        <dimen name="small_text_size">16dp</dimen>
+        <dimen name="big_text_size">16dp</dimen>
+        <dimen name="smaller_text_size">10dp</dimen>
+        <dimen name="bigger_text_size">18dp</dimen>
+
+        <dimen name="text_18">18dp</dimen>
+        <dimen name="text_14">14dp</dimen>
+        <dimen name="text_12">12dp</dimen>
+
+        <!--间距-->
+        <dimen name="screenPadding">10dp</dimen>   <!--距离屏幕左右的边距.这个app通用-->
+        <dimen name="basicPaddingSize">4dp</dimen>
+        <dimen name="inputEditTextMinHeight">32dp</dimen>
+        <dimen name="searchViewMinHeight">45dp</dimen>
+        <dimen name="smallPadding">8dp</dimen>
+        <dimen name="largePadding">16dp</dimen>
+        <dimen name="largerPadding">24dp</dimen>
+        <dimen name="largestPadding">32dp</dimen>
+        <dimen name="smallerPadding">3dp</dimen>
+        <dimen name="littlePadding">60dp</dimen>
+        <dimen name="middlePadding">10dp</dimen>
+        <dimen name="basePadding">12dp</dimen>
+        <dimen name="footerPadding">11dp</dimen>
+        <dimen name="noPadding">0dp</dimen>
+
+</resources>

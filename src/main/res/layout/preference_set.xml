@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+    
+      <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/mmtitle_bg" >
+
+        <Button
+            android:id="@+id/serial_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="20dp"
+            android:background="@drawable/weixin_selector_btn_back"
+            android:padding="18dp"
+            android:text="@string/back"
+            style="@style/menubutton" 
+            android:onClick="serial_back"
+            />
+
+        <TextView
+            style="@style/menutop"
+            android:text="@string/serial_port_setup"
+          />
+    </RelativeLayout>
+    
+      <ListView
+          android:id="@android:id/list"
+          android:layout_width="fill_parent"
+          android:layout_height="fill_parent"
+          android:paddingLeft="20dp"
+          android:paddingTop="10dp"
+          android:paddingBottom="10dp"
+          ></ListView>
+
+</LinearLayout>

@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="Gradle: tcn_springboard-release:@aar">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/tcn_springboard-release.aar/47a0a075929e371ea173a10f4df9706b/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/tcn_springboard-release.aar/47a0a075929e371ea173a10f4df9706b/res" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

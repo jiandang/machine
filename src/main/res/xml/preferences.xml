@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    android:title="Setup">
+    <ListPreference
+        android:key="MAINDEVICE"
+        android:persistent="true"
+        android:title="串口"></ListPreference>
+    <ListPreference
+        android:entries="@array/baudrates_name"
+        android:entryValues="@array/baudrates_value"
+        android:key="MAINBAUDRATE"
+        android:persistent="true"
+        android:title="波特率"></ListPreference>
+</PreferenceScreen>

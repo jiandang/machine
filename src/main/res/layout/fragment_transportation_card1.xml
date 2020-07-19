@@ -1,0 +1,1164 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#E9F7FF"
+    android:orientation="vertical"
+    tools:context="com.example.myapplication.fragment.TransportationCardFragment">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <!--第一页-->
+            <LinearLayout
+                android:id="@+id/ll_leiBiao"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="30dp"
+                android:orientation="vertical"
+                android:padding="20dp"
+                android:visibility="gone">
+
+                <LinearLayout
+                    android:id="@+id/ll_find"
+                    android:layout_width="match_parent"
+                    android:layout_height="180dp"
+                    android:background="@drawable/shape_ffffff"
+                    android:gravity="center_vertical"
+                    android:padding="20dp">
+
+                    <ImageView
+                        android:layout_width="200dp"
+                        android:layout_height="160dp"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/transport" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="60dp"
+                        android:gravity="center_vertical"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="余额查询"
+                            android:textColor="#333"
+                            android:textSize="35dp" />
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="25dp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="查询合肥通卡内余额"
+                            android:textColor="#999"
+                            android:textSize="28dp" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/ll_bu"
+                    android:layout_width="match_parent"
+                    android:layout_height="180dp"
+                    android:layout_marginTop="30dp"
+                    android:background="@drawable/shape_ffffff"
+                    android:gravity="center_vertical"
+                    android:padding="20dp">
+
+                    <ImageView
+                        android:layout_width="200dp"
+                        android:layout_height="160dp"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/transport" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="60dp"
+                        android:gravity="center_vertical"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="补登充值"
+                            android:textColor="#333"
+                            android:textSize="35dp" />
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="25dp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="合肥通APP购买充值券后，在此补登充值"
+                            android:textColor="#999"
+                            android:textSize="28dp" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/ll_chong"
+                    android:layout_width="match_parent"
+                    android:layout_height="180dp"
+                    android:layout_marginTop="30dp"
+                    android:background="@drawable/shape_ffffff"
+                    android:gravity="center_vertical"
+                    android:padding="20dp">
+
+                    <ImageView
+                        android:layout_width="200dp"
+                        android:layout_height="160dp"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/transport" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="60dp"
+                        android:gravity="center_vertical"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="在线充值"
+                            android:textColor="#333"
+                            android:textSize="35dp" />
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="25dp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="在线支付，充值合肥通交通卡"
+                            android:textColor="#999"
+                            android:textSize="28dp" />
+                    </LinearLayout>
+                </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/ll_bu_chong"
+                    android:layout_width="match_parent"
+                    android:layout_height="180dp"
+                    android:layout_marginTop="30dp"
+                    android:background="@drawable/shape_ffffff"
+                    android:gravity="center_vertical"
+                    android:padding="20dp">
+
+                    <ImageView
+                        android:layout_width="200dp"
+                        android:layout_height="160dp"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/transport" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="60dp"
+                        android:gravity="center_vertical"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="补充值"
+                            android:textColor="#333"
+                            android:textSize="35dp" />
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="25dp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="查询异常订单，补充值合肥通交通卡"
+                            android:textColor="#999"
+                            android:textSize="28dp" />
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+            <!--查询，领款，充值-->
+            <LinearLayout
+                android:id="@+id/ll_yuEFind"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:visibility="visible">
+
+                <TextView
+                    android:id="@+id/tv_yu"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:gravity="center_horizontal"
+                    android:text="交通卡余额查询"
+                    android:textColor="#333"
+                    android:textSize="30dp" />
+                <!--余额查询1-->
+                <LinearLayout
+                    android:id="@+id/ll_yu"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="60dp"
+                    android:gravity="center_horizontal"
+                    android:visibility="gone">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="80dp"
+                            android:layout_height="80dp"
+                            android:background="@drawable/banner_indicator_selected"
+                            android:gravity="center"
+                            android:text="1"
+                            android:textColor="#fff"
+                            android:textSize="35dp" />
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="20dp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="读卡"
+                            android:textColor="#333"
+                            android:textSize="30dp" />
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="300dp"
+                        android:layout_height="1dp"
+                        android:layout_marginTop="40dp"
+                        android:background="#000" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="80dp"
+                            android:layout_height="80dp"
+                            android:background="@drawable/banner_indicator_selected1"
+                            android:gravity="center"
+                            android:text="2"
+                            android:textColor="#000"
+                            android:textSize="35dp" />
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="20dp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="余额"
+                            android:textColor="#333"
+                            android:textSize="30dp" />
+                    </LinearLayout>
+                </LinearLayout>
+                <!--余额查询2-->
+                <LinearLayout
+                    android:id="@+id/ll_yu1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="60dp"
+                    android:gravity="center_horizontal"
+                    android:visibility="gone">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="80dp"
+                            android:layout_height="80dp"
+                            android:background="@drawable/wancheng"
+                            android:gravity="center"
+                            android:text=""
+                            android:textColor="#fff"
+                            android:textSize="35dp" />
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="20dp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="读卡"
+                            android:textColor="#333"
+                            android:textSize="30dp" />
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="300dp"
+                        android:layout_height="1dp"
+                        android:layout_marginTop="40dp"
+                        android:background="#000" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="80dp"
+                            android:layout_height="80dp"
+                            android:background="@drawable/banner_indicator_selected"
+                            android:gravity="center"
+                            android:text="2"
+                            android:textColor="#fff"
+                            android:textSize="35dp" />
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="20dp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="余额"
+                            android:textColor="#333"
+                            android:textSize="30dp" />
+                    </LinearLayout>
+                </LinearLayout>
+                <!--补登领款1-->
+                <RelativeLayout
+                    android:id="@+id/rl_bu"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="60dp"
+                    android:visibility="gone">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentTop="true"
+                        android:layout_toLeftOf="@+id/textView7"
+                        android:layout_toStartOf="@+id/textView7"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/tv1"
+                            android:layout_width="80dp"
+                            android:layout_height="80dp"
+                            android:background="@drawable/banner_indicator_selected"
+                            android:gravity="center"
+                            android:text="1"
+                            android:textColor="#fff"
+                            android:textSize="35dp" />
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="20dp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="读卡"
+                            android:textColor="#333"
+                            android:textSize="30dp" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/textView8"
+                        android:layout_width="150dp"
+                        android:layout_height="1dp"
+                        android:layout_marginTop="40dp"
+                        android:layout_toEndOf="@+id/linearLayout3"
+                        android:layout_toRightOf="@+id/linearLayout3"
+                        android:background="#000" />
+
+                    <LinearLayout
+                        android:id="@+id/linearLayout3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentTop="true"
+                        android:layout_centerHorizontal="true"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/tv2"
+                            android:layout_width="80dp"
+                            android:layout_height="80dp"
+                            android:background="@drawable/banner_indicator_selected1"
+                            android:gravity="center"
+                            android:text="2"
+                            android:textColor="#000"
+                            android:textSize="35dp" />
+
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/textView7"
+                        android:layout_width="150dp"
+                        android:layout_height="1dp"
+                        android:layout_marginRight="0dp"
+                        android:layout_marginTop="40dp"
+                        android:layout_toLeftOf="@+id/linearLayout3"
+                        android:layout_toStartOf="@+id/linearLayout3"
+                        android:background="#000" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentTop="true"
+                        android:layout_toEndOf="@+id/textView8"
+                        android:layout_toRightOf="@+id/textView8"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/tv3"
+                            android:layout_width="80dp"
+                            android:layout_height="80dp"
+                            android:background="@drawable/banner_indicator_selected1"
+                            android:gravity="center"
+                            android:text="3"
+                            android:textColor="#000"
+                            android:textSize="35dp" />
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/textView11"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:layout_centerHorizontal="true"
+                        android:text="查询补登余额"
+                        android:textColor="#333"
+                        android:textSize="30dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:layout_marginLeft="80dp"
+                        android:layout_marginStart="80dp"
+                        android:layout_toEndOf="@+id/textView11"
+                        android:layout_toRightOf="@+id/textView11"
+                        android:text="金额写卡"
+                        android:textColor="#333"
+                        android:textSize="30dp" />
+                </RelativeLayout>
+                <!--在线充值1-->
+                <RelativeLayout
+                    android:id="@+id/rl_chong"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:visibility="gone">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentTop="true"
+                        android:layout_toLeftOf="@+id/textView6"
+                        android:layout_toStartOf="@+id/textView6"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/t1"
+                            android:layout_width="80dp"
+                            android:layout_height="80dp"
+                            android:background="@drawable/banner_indicator_selected"
+                            android:gravity="center"
+                            android:text="1"
+                            android:textColor="#fff"
+                            android:textSize="35dp" />
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="20dp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="读卡"
+                            android:textColor="#333"
+                            android:textSize="30dp" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/textView9"
+                        android:layout_width="150dp"
+                        android:layout_height="1dp"
+                        android:layout_marginTop="40dp"
+                        android:layout_toEndOf="@+id/linearLayout4"
+                        android:layout_toRightOf="@+id/linearLayout4"
+                        android:background="#000" />
+
+                    <LinearLayout
+                        android:id="@+id/linearLayout4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentTop="true"
+                        android:layout_centerHorizontal="true"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/t2"
+                            android:layout_width="80dp"
+                            android:layout_height="80dp"
+                            android:background="@drawable/banner_indicator_selected1"
+                            android:gravity="center"
+                            android:text="2"
+                            android:textColor="#000"
+                            android:textSize="35dp" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/textView6"
+                        android:layout_width="150dp"
+                        android:layout_height="1dp"
+                        android:layout_marginRight="0dp"
+                        android:layout_marginTop="40dp"
+                        android:layout_toLeftOf="@+id/linearLayout4"
+                        android:layout_toStartOf="@+id/linearLayout4"
+                        android:background="#000" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentTop="true"
+                        android:layout_toEndOf="@+id/textView9"
+                        android:layout_toRightOf="@+id/textView9"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/t3"
+                            android:layout_width="80dp"
+                            android:layout_height="80dp"
+                            android:background="@drawable/banner_indicator_selected1"
+                            android:gravity="center"
+                            android:text="3"
+                            android:textColor="#000"
+                            android:textSize="35dp" />
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/textView10"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:layout_centerHorizontal="true"
+                        android:text="充值"
+                        android:textColor="#333"
+                        android:textSize="30dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:layout_marginLeft="140dp"
+                        android:layout_marginStart="140dp"
+                        android:layout_toEndOf="@+id/textView10"
+                        android:layout_toRightOf="@+id/textView10"
+                        android:text="金额写卡"
+                        android:textColor="#333"
+                        android:textSize="30dp" />
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp" />
+                <!--贴卡-->
+                <LinearLayout
+                    android:id="@+id/ll_fanying"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:orientation="vertical"
+                    android:visibility="gone">
+
+                    <ImageView
+                        android:layout_width="150dp"
+                        android:layout_height="180dp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/icon_dukaqi" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="90dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="请将卡片放在读卡器上"
+                        android:textColor="#333"
+                        android:textSize="30dp" />
+                </LinearLayout>
+                <!--<LinearLayout-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:orientation="horizontal">-->
+                <!--充值才显示-->
+                <LinearLayout
+                    android:id="@+id/ll_chongzhi"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:visibility="gone">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:id="@+id/tv_yu_chong"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:text="充值金额："
+                            android:textColor="#333"
+                            android:textSize="35dp" />
+
+                        <TextView
+                            android:id="@+id/tv_chongzhi"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:text="20元"
+                            android:textColor="#333"
+                            android:textSize="35dp" />
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="10dp" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:text="卡号："
+                            android:textColor="#333"
+                            android:textSize="27dp" />
+
+                        <TextView
+                            android:id="@+id/tv_card1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:text="1007511 82283194 5512"
+                            android:textColor="#333"
+                            android:textSize="27dp" />
+                    </LinearLayout>
+
+                    <!--<View-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="60dp" />-->
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="15dp"
+                    android:paddingRight="15dp"
+                    android:orientation="horizontal">
+                    <!--充值选择-->
+                    <LinearLayout
+                        android:layout_weight="1"
+                        android:id="@+id/ll_select"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="20dp"
+                        android:orientation="vertical"
+                        android:visibility="visible">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:gravity="center">
+
+                                <TextView
+                                    android:id="@+id/tv_10"
+                                    android:layout_width="180dp"
+                                    android:layout_height="80dp"
+                                    android:background="@drawable/footer_bg"
+                                    android:gravity="center"
+                                    android:text="10元"
+                                    android:textColor="#fff"
+                                    android:textSize="50dp" />
+                            </LinearLayout>
+
+                            <View
+                                android:layout_width="30dp"
+                                android:layout_height="match_parent" />
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:gravity="center">
+
+                                <TextView
+                                    android:id="@+id/tv_20"
+                                    android:layout_width="180dp"
+                                    android:layout_height="80dp"
+                                    android:background="@drawable/shape_ffffff"
+                                    android:gravity="center"
+                                    android:text="20元"
+                                    android:textColor="#333"
+                                    android:textSize="50dp" />
+                            </LinearLayout>
+
+                            <View
+                                android:layout_width="30dp"
+                                android:layout_height="match_parent" />
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:gravity="center">
+
+                                <TextView
+                                    android:id="@+id/tv_50"
+                                    android:layout_width="180dp"
+                                    android:layout_height="80dp"
+                                    android:background="@drawable/shape_ffffff"
+                                    android:gravity="center"
+                                    android:text="50元"
+                                    android:textColor="#333"
+                                    android:textSize="50dp" />
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="20dp">
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:gravity="center">
+
+                                <TextView
+                                    android:id="@+id/tv_100"
+                                    android:layout_width="180dp"
+                                    android:layout_height="80dp"
+                                    android:background="@drawable/shape_ffffff"
+                                    android:gravity="center"
+                                    android:text="100元"
+                                    android:textColor="#333"
+                                    android:textSize="50dp" />
+                            </LinearLayout>
+                            <View
+                                android:layout_width="30dp"
+                                android:layout_height="match_parent" />
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:gravity="center">
+
+                                <!--<LinearLayout-->
+                                <!--android:background="@drawable/shape_ffffff"-->
+                                <!--android:gravity="center"-->
+                                <!--android:id="@+id/tv_zi"-->
+                                <!--android:layout_width="140dp"-->
+                                <!--android:layout_height="110dp">-->
+                                <com.example.myapplication.util.ClearEditText
+                                    android:id="@+id/tv_zi"
+                                    android:layout_width="180dp"
+                                    android:layout_height="80dp"
+                                    android:background="@drawable/shape_ffffff"
+                                    android:gravity="center"
+                                    android:hint="自定义"
+                                    android:imeOptions="actionDone"
+                                    android:inputType="number"
+                                    android:maxLength="3"
+                                    android:textColor="#333"
+                                    android:textSize="50dp" />
+                                <!--<TextView-->
+                                <!--android:text="元"-->
+                                <!--android:textSize="30dp"-->
+                                <!--android:textColor="#fff"-->
+                                <!--android:layout_width="wrap_content"-->
+                                <!--android:layout_height="wrap_content" />-->
+                                <!--</LinearLayout>-->
+                            </LinearLayout>
+                            <View
+                                android:layout_width="30dp"
+                                android:layout_height="match_parent" />
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:gravity="center">
+
+                                <TextView
+                                    android:id="@+id/tv_return"
+                                    android:layout_width="180dp"
+                                    android:layout_height="80dp"
+                                    android:background="@drawable/shape_ffffff"
+                                    android:gravity="center"
+                                    android:text="返回"
+                                    android:textColor="#333"
+                                    android:textSize="50dp" />
+                            </LinearLayout>
+                        </LinearLayout>
+                    </LinearLayout>
+                    <!--选择支付方式-->
+                    <LinearLayout
+                        android:layout_weight="1"
+                        android:id="@+id/ll_fangShi"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:orientation="vertical"
+                        android:visibility="gone">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="0dp"
+                            android:gravity="center_horizontal"
+                            android:text="请选择您的支付方式"
+                            android:textColor="#333"
+                            android:textSize="30dp" />
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginTop="10dp">
+
+                            <com.example.myapplication.util.MyGridView
+                                android:id="@+id/gv"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:columnWidth="180dp"
+                                android:gravity="center"
+                                android:numColumns="3"
+                                android:stretchMode="spacingWidthUniform" />
+                        </LinearLayout>
+                        <!--<LinearLayout-->
+                        <!--android:id="@+id/ll_weiXin"-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:layout_weight="1"-->
+                        <!--android:gravity="center"-->
+                        <!--android:orientation="vertical">-->
+
+                        <!--<ImageView-->
+                        <!--android:layout_width="120dp"-->
+                        <!--android:layout_height="120dp"-->
+                        <!--android:src="@drawable/weixin" />-->
+
+                        <!--<View-->
+                        <!--android:layout_width="match_parent"-->
+                        <!--android:layout_height="10dp" />-->
+
+                        <!--<TextView-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:text="微信"-->
+                        <!--android:textColor="#333"-->
+                        <!--android:textSize="28dp" />-->
+                        <!--</LinearLayout>-->
+
+                        <!--<LinearLayout-->
+                        <!--android:id="@+id/ll_zhiFuzBao"-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:layout_weight="1"-->
+                        <!--android:gravity="center"-->
+                        <!--android:orientation="vertical">-->
+
+                        <!--<ImageView-->
+                        <!--android:layout_width="120dp"-->
+                        <!--android:layout_height="120dp"-->
+                        <!--android:src="@drawable/zhifubao" />-->
+
+                        <!--<View-->
+                        <!--android:layout_width="match_parent"-->
+                        <!--android:layout_height="20dp" />-->
+
+                        <!--<TextView-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:text="支付宝"-->
+                        <!--android:textColor="#333"-->
+                        <!--android:textSize="28dp" />-->
+                        <!--</LinearLayout>-->
+
+                        <!--<LinearLayout-->
+                        <!--android:id="@+id/ll_yinLian"-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:layout_weight="1"-->
+                        <!--android:gravity="center"-->
+                        <!--android:orientation="vertical">-->
+
+                        <!--<ImageView-->
+                        <!--android:layout_width="120dp"-->
+                        <!--android:layout_height="120dp"-->
+                        <!--android:src="@drawable/yinlian" />-->
+
+                        <!--<View-->
+                        <!--android:layout_width="match_parent"-->
+                        <!--android:layout_height="20dp" />-->
+
+                        <!--<TextView-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:text="银联"-->
+                        <!--android:textColor="#333"-->
+                        <!--android:textSize="28dp" />-->
+                        <!--</LinearLayout>-->
+
+                        <!--<LinearLayout-->
+                        <!--android:id="@+id/ll_xianJin"-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:layout_weight="1"-->
+                        <!--android:gravity="center"-->
+                        <!--android:orientation="vertical">-->
+
+                        <!--<ImageView-->
+                        <!--android:layout_width="120dp"-->
+                        <!--android:layout_height="120dp"-->
+                        <!--android:src="@drawable/xianjinzhifu" />-->
+
+                        <!--<View-->
+                        <!--android:layout_width="match_parent"-->
+                        <!--android:layout_height="20dp" />-->
+
+                        <!--<TextView-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:text="现金"-->
+                        <!--android:textColor="#333"-->
+                        <!--android:textSize="28dp" />-->
+                        <!--</LinearLayout>-->
+                    </LinearLayout>
+                </LinearLayout>
+                <!--</LinearLayout>-->
+                <!--正在读卡、写卡-->
+                <LinearLayout
+                    android:id="@+id/ll_duka"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="10dp"
+                    android:orientation="vertical"
+                    android:visibility="gone">
+
+                    <ImageView
+                        android:id="@+id/iv_tu"
+                        android:layout_width="200dp"
+                        android:layout_height="200dp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/zhengzaiduka_xieka" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="20dp" />
+
+                    <TextView
+                        android:id="@+id/tv_du"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="正在读卡"
+                        android:textColor="#333"
+                        android:textSize="30dp" />
+                </LinearLayout>
+                <!--余额显示,领款成功，充值成功-->
+                <TextView
+                    android:id="@+id/tv_success"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="成功！"
+                    android:textColor="#333"
+                    android:textSize="34dp"
+                    android:visibility="gone" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="10dp" />
+
+                <LinearLayout
+                    android:id="@+id/ll_yuEShow"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:orientation="vertical"
+                    android:visibility="gone">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:text="卡号："
+                            android:textColor="#333"
+                            android:textSize="27dp" />
+
+                        <TextView
+                            android:id="@+id/tv_card"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:text="1007511 82283194 5512"
+                            android:textColor="#333"
+                            android:textSize="27dp" />
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="20dp" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:text="卡内余额："
+                            android:textColor="#333"
+                            android:textSize="27dp" />
+
+                        <TextView
+                            android:id="@+id/tv_money"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:text="20元"
+                            android:textColor="#333"
+                            android:textSize="27dp" />
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="20dp" />
+
+                    <LinearLayout
+                        android:id="@+id/ll_jinE"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center">
+
+                        <TextView
+                            android:id="@+id/tv_jin"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:text="领款金额："
+                            android:textColor="#333"
+                            android:textSize="27dp" />
+
+                        <TextView
+                            android:id="@+id/tv_jinE"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:text="50元"
+                            android:textColor="#333"
+                            android:textSize="27dp" />
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="20dp" />
+
+                    <LinearLayout
+                        android:id="@+id/ll_jinE1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center">
+
+                        <TextView
+                            android:id="@+id/tv_jin1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:text="领款后金额："
+                            android:textColor="#333"
+                            android:textSize="27dp" />
+
+                        <TextView
+                            android:id="@+id/tv_jinE1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:text="70元"
+                            android:textColor="#333"
+                            android:textSize="27dp" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/btn_return"
+                    android:layout_width="280dp"
+                    android:layout_height="70dp"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="50dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/shape_76c5f0_1"
+                    android:text="返回"
+                    android:textColor="#fff"
+                    android:textSize="40dp"
+                    android:visibility="visible" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/ll_goods"
+        android:layout_width="wrap_content"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/shape_76c5f0_2"
+        android:layout_height="120dp">
+        <TextView
+            android:id="@+id/tv_huodaoNum"
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="货道号"
+            android:textColor="@color/black"
+            android:textSize="26dp" />
+
+        <View
+            android:layout_width="4dp"
+            android:layout_height="match_parent" />
+
+        <TextView
+            android:id="@+id/tv_stock"
+            android:layout_width="80dp"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="库存"
+            android:textColor="@color/black"
+            android:textSize="26dp" />
+
+        <View
+            android:layout_width="4dp"
+            android:layout_height="match_parent" />
+
+        <TextView
+            android:id="@+id/tv_goodsName"
+            android:layout_width="300dp"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="商品名称"
+            android:textColor="@color/black"
+            android:textSize="26dp" />
+        <ImageView
+            android:id="@+id/iv_pic"
+            android:layout_width="120dp"
+            android:layout_height="100dp"
+            android:layout_gravity="center"
+            android:src="@drawable/bhc"
+            android:textColor="@color/black"
+            android:textSize="26dp" />
+
+        <View
+            android:layout_width="4dp"
+            android:layout_height="match_parent" />
+        <View
+            android:layout_width="4dp"
+            android:layout_height="match_parent" />
+
+        <TextView
+            android:id="@+id/tv_huoNum"
+            android:layout_width="260dp"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="条形码"
+            android:textColor="@color/black"
+            android:textSize="26dp" />
+    </LinearLayout>
+</LinearLayout>

@@ -1,0 +1,176 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#E9F7FF"
+    android:orientation="vertical"
+    android:paddingLeft="40dp"
+    android:paddingRight="40dp"
+    tools:context="com.example.myapplication.fragment.fragment.HuoDaoFragment">
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="货柜"
+                    android:textColor="#2c2c2c"
+                    android:textSize="26dp" />
+
+                <View
+                    android:layout_width="30dp"
+                    android:layout_height="match_parent" />
+
+                <TextView
+                    android:id="@+id/tv_a"
+                    android:layout_width="120dp"
+                    android:layout_height="40dp"
+                    android:background="#76c5f0"
+                    android:gravity="center"
+                    android:text="A"
+                    android:textColor="@color/white"
+                    android:textSize="26dp" />
+
+                <TextView
+                    android:id="@+id/tv_b"
+                    android:layout_width="120dp"
+                    android:layout_height="40dp"
+                    android:background="#fff"
+                    android:gravity="center"
+                    android:text="B"
+                    android:textColor="@color/main_top_tab_color"
+                    android:textSize="26dp" />
+
+                <TextView
+                    android:id="@+id/tv_c"
+                    android:layout_width="120dp"
+                    android:layout_height="40dp"
+                    android:background="#fff"
+                    android:gravity="center"
+                    android:text="C"
+                    android:textColor="@color/main_top_tab_color"
+                    android:textSize="26dp" />
+
+                <TextView
+                    android:id="@+id/tv_d"
+                    android:layout_width="120dp"
+                    android:layout_height="40dp"
+                    android:background="#fff"
+                    android:gravity="center"
+                    android:text="D"
+                    android:textColor="@color/main_top_tab_color"
+                    android:textSize="26dp" />
+
+                <TextView
+                    android:id="@+id/tv_e"
+                    android:layout_width="120dp"
+                    android:layout_height="40dp"
+                    android:background="#fff"
+                    android:gravity="center"
+                    android:text="E"
+                    android:textColor="@color/main_top_tab_color"
+                    android:textSize="26dp" />
+
+                <TextView
+                    android:id="@+id/tv_f"
+                    android:layout_width="120dp"
+                    android:layout_height="40dp"
+                    android:background="#fff"
+                    android:gravity="center"
+                    android:text="F"
+                    android:textColor="@color/main_top_tab_color"
+                    android:textSize="26dp" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="40dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="货道"
+                    android:textColor="#2c2c2c"
+                    android:textSize="26dp" />
+
+                <View
+                    android:layout_width="30dp"
+                    android:layout_height="match_parent" />
+
+                <com.example.myapplication.util.MyGridView
+                    android:id="@+id/gv"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:columnWidth="80dp"
+                    android:gravity="center"
+                    android:numColumns="8"
+                    android:stretchMode="spacingWidthUniform" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="30dp" />
+
+            <LinearLayout
+                android:visibility="gone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp"
+                    android:gravity="center"
+                    android:text="补货"
+                    android:textColor="#E9F7FF"
+                    android:textSize="26dp" />
+
+                <View
+                    android:layout_width="30dp"
+                    android:layout_height="match_parent" />
+
+                <!--<TextView-->
+                    <!--android:id="@+id/tv_dianJiSet"-->
+                    <!--android:layout_width="200dp"-->
+                    <!--android:layout_height="50dp"-->
+                    <!--android:background="#76c5f0"-->
+                    <!--android:gravity="center"-->
+                    <!--android:text=""-->
+                    <!--android:textColor="@color/white"-->
+                    <!--android:textSize="26dp" />-->
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="10dp" />
+
+            <Button
+                android:id="@+id/btn_ceshi"
+                android:layout_width="580dp"
+                android:layout_height="70dp"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:layout_gravity="center"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/shape_76c5f0_1"
+                android:text="测试"
+                android:textColor="#fff"
+                android:textSize="28dp" />
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>
