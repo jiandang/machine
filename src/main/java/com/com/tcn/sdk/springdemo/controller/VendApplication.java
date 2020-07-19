@@ -2,15 +2,20 @@ package com.com.tcn.sdk.springdemo.controller;
 
 
 import android.content.SharedPreferences;
+import android.os.Environment;
 import android.util.Log;
 
 import com.example.myapplication.utils.Logger;
 import com.tcn.springboard.control.TcnShareUseData;
 import com.tcn.springboard.control.TcnVendApplication;
 
+import org.apache.log4j.Level;
 import org.xutils.x;
 
+import java.io.File;
+
 import android_serialport_api.sample.SerialPortFinder;
+import de.mindpipe.android.logging.log4j.LogConfigurator;
 
 /**
  * 描述：
@@ -19,7 +24,6 @@ import android_serialport_api.sample.SerialPortFinder;
  */
 public class VendApplication extends TcnVendApplication {
     private static VendApplication instance;
-    private SharedPreferences spf;
     public static VendApplication getInstance() {
         return instance;
     }
@@ -55,24 +59,4 @@ public class VendApplication extends TcnVendApplication {
 
     }
     public SerialPortFinder mSerialPortFinder = new SerialPortFinder();
-//    private SerialPort mSerialPort = null;
-
-//    public SerialPort getSerialPort() throws SecurityException, IOException, InvalidParameterException {
-//        if (mSerialPort == null) {
-//			/* Read serial port parameters */
-//            SharedPreferences sp = getSharedPreferences("android_serialport_api.sample_preferences", MODE_PRIVATE);
-//            Log.d("TAG", "getSerialPort: "+sp.getAll());
-//            String path = sp.getString("DEVICE", "");
-//            int baudrate = Integer.decode(sp.getString("BAUDRATE", "-1"));
-//            Log.d("TAG", "getSerialPort: "+path+"+++++++++"+baudrate);
-//			/* Check parameters */
-//            if ( (path.length() == 0) || (baudrate == -1)) {
-//                throw new InvalidParameterException();
-//            }
-//
-//			/* Open the serial port */
-////            mSerialPort = new SerialPort(new File(path), baudrate, 0);
-//        }
-//        return mSerialPort;
-//    }
 }

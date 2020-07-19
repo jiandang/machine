@@ -6,11 +6,11 @@ import android.content.SharedPreferences;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.os.Bundle;
-import android.os.Environment;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
+import android.text.TextUtils;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -26,6 +26,7 @@ import android.widget.TextView;
 
 import com.dwin.navy.serialportapi.com_zhongji;
 import com.example.myapp.R;
+import com.example.myapplication.BuChargeManager;
 import com.example.myapplication.adapter.PayAdapter1;
 import com.example.myapplication.bean.SettingBean;
 import com.example.myapplication.bean.TransportCard;
@@ -39,7 +40,6 @@ import com.example.myapplication.util.Utils;
 import com.zhy.http.okhttp.OkHttpUtils;
 import com.zhy.http.okhttp.callback.StringCallback;
 
-import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -49,11 +49,7 @@ import org.xutils.db.table.TableEntity;
 import org.xutils.ex.DbException;
 import org.xutils.x;
 
-import java.io.File;
-import java.io.InputStream;
-import java.io.OutputStream;
 import java.text.DecimalFormat;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -61,11 +57,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import android_serialport_api.SerialPort;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 import butterknife.OnClick;
-import de.mindpipe.android.logging.log4j.LogConfigurator;
 import okhttp3.Call;
 
 
@@ -129,14 +123,6 @@ public class TransportationCardFragment extends Fragment {
     ClearEditText tv_zi;
     @InjectView(R.id.ll_select)
     LinearLayout ll_select;
-    //    @InjectView(R.id.ll_weiXin)
-//    LinearLayout ll_weiXin;
-//    @InjectView(R.id.ll_zhiFuzBao)
-//    LinearLayout ll_zhiFuzBao;
-//    @InjectView(R.id.ll_yinLian)
-//    LinearLayout ll_yinLian;
-//    @InjectView(R.id.ll_xianJin)
-//    LinearLayout ll_xianJin;
     @InjectView(R.id.ll_fangShi)
     LinearLayout ll_fangShi;
     @InjectView(R.id.iv_tu)
@@ -171,13 +157,7 @@ public class TransportationCardFragment extends Fragment {
     LinearLayout ll_yuEFind;
     private int id = 0;
     private String money;
-    protected SerialPort mSerialPort;
-    protected InputStream mInputStream;
-    protected OutputStream mOutputStream;
-    //    private ReadThread mReadThread;
     private SharedPreferences spf;
-    //    private boolean flag = true;
-    private Map<String, String> map = new HashMap<>();
     /**
      * 中吉串口API
      */
@@ -215,12 +195,15 @@ public class TransportationCardFragment extends Fragment {
     private DbManager.DaoConfig daoConfig;
     private int width;
     private int height;
-    private String new_order_code;//合肥通支付订单号
+    private String new_order_code;//
+    private static Logger gLogger;
+    private MediaPlayer mediaPlayer;
+    private BuChargeManager mBuChargeManager;
+    private boolean isTest = true;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        width = getAndroiodScreenProperty();
-        height = getAndroiodScreenPropertyH();
+        initScreen();
         View view;
         if (width < height) {
             view = inflater.inflate(R.layout.fragment_transportation_card, container, false);
@@ -228,47 +211,25 @@ public class TransportationCardFragment extends Fragment {
             view = inflater.inflate(R.layout.fragment_transportation_card1, container, false);
         }
         ButterKnife.inject(this, view);
-        configLog();
         //初始化数据库配置信息
         initDaoConfig();
-//        initKongJian();
         spf = getActivity().getSharedPreferences("vending_machine", Context.MODE_PRIVATE);
         return view;
     }
 
     //获取串口返回值
     private String init(String sdata) {
-//        byte[] sendCmd = TransformUtils.HexString2Bytes(sdata);
-//        String dataCmd = SerialPortController.getInstance().writeDataII(sendCmd);
         if (zhongjiSerial == null) {
             Log.d(TAG, "init: 串口设置有问题");
             return "0";
         }
         String dataCmd = zhongjiSerial.checkXunKa(sdata);
         Log.d(TAG, "onViewClicked: " + dataCmd);
-//        try {
-//            mSerialPort = new SerialPort(new File("/dev/ttyS2"), 115200, 0);
-//            Log.d("TAG", "onClick: " + sdata);
-//            mInputStream = mSerialPort.getInputStream();
-//            mOutputStream = mSerialPort.getOutputStream();
-//            byte[] bytes = Utils.hexStr2Byte(data);
-//            mOutputStream.write(bytes);
-//            mOutputStream.flush();
-//            Log.i("test2", "发送成功");
-////            Toast.makeText(getActivity(), "发送成功！！！", Toast.LENGTH_SHORT).show();
-//            mReadThread = new ReadThread();
-//            mReadThread.start();
-//        } catch (IOException e) {
-//            Log.i("test", "发送失败");
-//            Toast.makeText(getActivity(), "发送失败！！！", Toast.LENGTH_SHORT).show();
-//            e.printStackTrace();
-//        }
         return dataCmd;
     }
 
     //打开串口
     private void init() {
-
         String serialPort = spf.getString("serialport", "");
         Log.d("TAG", "onCreateView: " + serialPort);
         if (serialPort != null && !serialPort.equals("")) {
@@ -276,15 +237,6 @@ public class TransportationCardFragment extends Fragment {
             Log.d("TAG", "onCreateView: " + substring1);
             zhongjiSerial = com_zhongji.getInstance(substring1);
         }
-        //        String devices0 = spf.getString("devices0", "");
-//        String baudrates0_1 = spf.getString("baudrates0", "");
-//        Log.d(TAG, "onViewClicked0: " + devices0 + "++++++++" + baudrates0_1);
-//            if (devices0 != null && !devices0.equals("") && !baudrates0_1.equals("")) {
-//                int baudrates0 = Integer.parseInt(baudrates0_1);
-//                SerialPortController.getInstance().openSerialPort(devices0, baudrates0);
-//            } else {
-//                Toast.makeText(getActivity(), "请先设置读卡器串口", Toast.LENGTH_SHORT).show();
-//            }
     }
 
     //初始化控件状态
@@ -351,8 +303,6 @@ public class TransportationCardFragment extends Fragment {
         btn_return.setEnabled(true);
     }
 
-    private MediaPlayer mediaPlayer;
-
     // 初始化MediaPlayer 提示音
     private void play(int result) {
         try {
@@ -415,7 +365,7 @@ public class TransportationCardFragment extends Fragment {
             mediaPlayer.release();
             mediaPlayer = null;
         }
-        if(handlers!=null && runnables!=null){
+        if (handlers != null && runnables != null) {
             handlers.removeCallbacksAndMessages(null);
         }
         super.onDestroyView();
@@ -430,38 +380,19 @@ public class TransportationCardFragment extends Fragment {
             R.id.tv_50, R.id.tv_100, R.id.tv_zi, R.id.tv_return, R.id.ll_select, R.id.ll_fangShi,
             R.id.iv_tu, R.id.tv_du, R.id.ll_duka, R.id.tv_card, R.id.tv_money,
             R.id.tv_jin, R.id.tv_jinE, R.id.ll_jinE, R.id.tv_jin1, R.id.tv_jinE1,
-            R.id.ll_jinE1, R.id.ll_yuEShow, R.id.btn_return, R.id.ll_yuEFind,R.id.ll_bu_chong})
+            R.id.ll_jinE1, R.id.ll_yuEShow, R.id.btn_return, R.id.ll_bu_chong})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.ll_bu_chong://补充值
-
+//                mBuChargeManager = new BuChargeManager(getActivity(),)
                 break;
-            case R.id.ll_find:
-                init();
-                a = 0;
-                initSignin(-1);
+            case R.id.ll_find://余额查询
+                initSignin();
                 ll_find.setEnabled(false);
-                ll_leiBiao.setVisibility(View.GONE);
-                ll_yuEFind.setVisibility(View.VISIBLE);
                 ll_yu.setVisibility(View.VISIBLE);
-                ll_fanying.setVisibility(View.VISIBLE);
                 tv_yu.setText("交通卡余额查询");
-                btn_return.setVisibility(View.GONE);
-                String xunKa = "0200000010800000000600003C0000BECC01010000D803";
-                String data = init(xunKa);
-                if (data == null) {
-                    data = init(xunKa);
-                    if (data == null) {
-                        data = init(xunKa);
-                        if (data == null) {
-                            TcnUtility.getToast(getActivity(), "请重新贴卡");
-                            initKongJian();
-                            return;
-                        }
-                    }
-                } else if (data.equals("0")) {
-                    TcnUtility.getToast(getActivity(), "串口设置有问题");
-                    initKongJian();
+                String data = initXunKa();
+                if (TextUtils.isEmpty(data)) {
                     return;
                 }
                 final Handler handler = new Handler();
@@ -469,58 +400,25 @@ public class TransportationCardFragment extends Fragment {
                 final Runnable runnable = new Runnable() {
                     @Override
                     public void run() {
+                        Log.i("余额查询",Thread.currentThread().getName());
                         String substring = finalData.substring(finalData.length() - 8, finalData.length() - 4);
                         if (finalData != null && !finalData.equals("") && substring.equals("9000")) {
                             chaXun();//查询
                         } else {
-                            AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-                            View aalayout = View.inflate(getActivity(), R.layout.layout_hint, null);
-                            Button btn_confirm = aalayout.findViewById(R.id.btn_confirm);
-                            TextView tv_message = aalayout.findViewById(R.id.tv_message);
-                            tv_message.setText("卡片被移开，请重新放卡");
-                            builder.setCancelable(false)
-                                    .setView(aalayout);
-                            final AlertDialog dialog = builder.create();
-                            dialog.show();
-                            btn_confirm.setOnClickListener(new View.OnClickListener() {
-                                @Override
-                                public void onClick(View v) {
-                                    initKongJian();
-                                    dialog.dismiss();
-                                }
-                            });
+                            showNoCardDialog();
                         }
                     }
                 };
                 handler.postDelayed(runnable, 500);//线程时间3秒
                 break;
             case R.id.ll_bu:
-                init();
-                a = 0;
-                initSignin(-1);
+                initSignin();
                 ll_bu.setEnabled(false);
-                ll_leiBiao.setVisibility(View.GONE);
-                ll_yuEFind.setVisibility(View.VISIBLE);
                 rl_bu.setVisibility(View.VISIBLE);
-                ll_fanying.setVisibility(View.VISIBLE);
                 tv_yu.setText("交通卡补登充值");
-                btn_return.setVisibility(View.GONE);
                 id = 10;
-                String xunKaBuDeng = "0200000010800000000600003C0000BECC01010000D803";//寻卡
-                String xunKaBu = init(xunKaBuDeng);
-                if (xunKaBu == null) {
-                    xunKaBu = init(xunKaBuDeng);
-                    if (xunKaBu == null) {
-                        xunKaBu = init(xunKaBuDeng);
-                        if (xunKaBu == null) {
-                            TcnUtility.getToast(getActivity(), "请重新贴卡");
-                            initKongJian();
-                            return;
-                        }
-                    }
-                } else if (xunKaBu.equals("0")) {
-                    TcnUtility.getToast(getActivity(), "串口设置有问题");
-                    initKongJian();
+                String xunKaBu = initXunKa();
+                if (TextUtils.isEmpty(xunKaBu)) {
                     return;
                 }
                 final Handler handlerBuDeng = new Handler();
@@ -535,54 +433,20 @@ public class TransportationCardFragment extends Fragment {
                             ll_duka.setVisibility(View.VISIBLE);
                             tv_du.setText("正在读卡");
                         } else {
-                            AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-                            View aalayout = View.inflate(getActivity(), R.layout.layout_hint, null);
-                            Button btn_confirm = aalayout.findViewById(R.id.btn_confirm);
-                            TextView tv_message = aalayout.findViewById(R.id.tv_message);
-                            tv_message.setText("卡片被移开，请重新放卡");
-                            builder.setCancelable(false)
-                                    .setView(aalayout);
-                            final AlertDialog dialog = builder.create();
-                            dialog.show();
-                            btn_confirm.setOnClickListener(new View.OnClickListener() {
-                                @Override
-                                public void onClick(View v) {
-                                    initKongJian();
-                                    dialog.dismiss();
-                                }
-                            });
+                            showNoCardDialog();
                         }
                     }
                 };
                 handlerBuDeng.postDelayed(runnableBuDeng, 500);//线程时间10秒
                 break;
             case R.id.ll_chong:
-                init();
-                a = 0;
-                initSignin(-1);
+                initSignin();
                 ll_chong.setEnabled(false);
-                ll_leiBiao.setVisibility(View.GONE);
-                ll_yuEFind.setVisibility(View.VISIBLE);
                 rl_chong.setVisibility(View.VISIBLE);
-                ll_fanying.setVisibility(View.VISIBLE);
                 tv_yu.setText("交通卡在线充值");
-                btn_return.setVisibility(View.GONE);
                 id = 20;
-                String xunKaRecharge = "0200000010800000000600003C0000BECC01010000D803";//寻卡
-                String xunRecharge = init(xunKaRecharge);
-                if (xunRecharge == null) {
-                    xunRecharge = init(xunKaRecharge);
-                    if (xunRecharge == null) {
-                        xunRecharge = init(xunKaRecharge);
-                        if (xunRecharge == null) {
-                            TcnUtility.getToast(getActivity(), "请重新贴卡");
-                            initKongJian();
-                            return;
-                        }
-                    }
-                } else if (xunRecharge.equals("0")) {
-                    TcnUtility.getToast(getActivity(), "串口设置有问题");
-                    initKongJian();
+                String xunRecharge = initXunKa();
+                if (TextUtils.isEmpty(xunRecharge)) {
                     return;
                 }
                 final Handler handlerRecharge = new Handler();
@@ -590,8 +454,7 @@ public class TransportationCardFragment extends Fragment {
                 final Runnable runnableRecharge = new Runnable() {
                     @Override
                     public void run() {
-//                        final String data = map.get("data");
-//                        Log.d("TAG", "onViewClicked1: " + xunRecharge);
+                        Log.d("TAG", "onViewClicked1: " + finalxunRecharge);
                         String substring = finalxunRecharge.substring(finalxunRecharge.length() - 8, finalxunRecharge.length() - 4);
                         if (substring.equals("9000")) {
                             selectAID(finalxunRecharge);
@@ -599,60 +462,12 @@ public class TransportationCardFragment extends Fragment {
                             ll_duka.setVisibility(View.VISIBLE);
                             tv_du.setText("正在读卡");
                         } else {
-                            AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-                            View aalayout = View.inflate(getActivity(), R.layout.layout_hint, null);
-                            Button btn_confirm = aalayout.findViewById(R.id.btn_confirm);
-                            TextView tv_message = aalayout.findViewById(R.id.tv_message);
-                            tv_message.setText("卡片被移开，请重新放卡");
-                            builder.setCancelable(false)
-                                    .setView(aalayout);
-                            final AlertDialog dialog = builder.create();
-
-                            dialog.show();
-                            btn_confirm.setOnClickListener(new View.OnClickListener() {
-                                @Override
-                                public void onClick(View v) {
-                                    initKongJian();
-                                    dialog.dismiss();
-                                }
-                            });
+                            showNoCardDialog();
                         }
                     }
                 };
                 handlerRecharge.postDelayed(runnableRecharge, 500);//线程时间10秒
                 break;
-//            case R.id.ll_leiBiao:
-//                break;
-//            case R.id.tv_yu:
-//                break;
-//            case R.id.ll_yu:
-//                break;
-//            case R.id.ll_yu1:
-//                break;
-//            case R.id.tv1:
-//                break;
-//            case R.id.tv2:
-//                break;
-//            case R.id.tv3:
-//                break;
-//            case R.id.rl_bu:
-//                break;
-//            case R.id.t1:
-//                break;
-//            case R.id.t2:
-//                break;
-//            case R.id.t3:
-//                break;
-//            case R.id.rl_chong:
-//                break;
-//            case R.id.ll_fanying:
-//                break;
-//            case R.id.tv_chongzhi:
-//                break;
-//            case R.id.tv_card1:
-//                break;
-//            case R.id.ll_chongzhi:
-//                break;
             case R.id.tv_10:
                 initSelect();
                 tv_10.setBackgroundResource(R.drawable.footer_bg);
@@ -661,10 +476,6 @@ public class TransportationCardFragment extends Fragment {
                 tv_zi.setHintTextColor(getResources().getColor(R.color.black1));
                 money = tv_10.getText().toString();
                 flag = 1;
-//                if (width > height) {
-//                    Log.d(TAG, "onViewClicked: 宽屏");
-//
-//                }
                 break;
             case R.id.tv_20:
                 initSelect();
@@ -705,32 +516,6 @@ public class TransportationCardFragment extends Fragment {
                 break;
             case R.id.ll_select:
                 break;
-//            case R.id.ll_weiXin:
-//                ll_fangShi.setVisibility(View.GONE);
-//                ll_duka.setVisibility(View.VISIBLE);
-//                iv_tu.setImageResource(R.drawable.erweima);
-//                tv_du.setText("请打开微信扫码充值");
-//                btn_return.setText("返回");
-//                id = 20;
-//                break;
-//            case R.id.ll_zhiFuzBao:
-//                ll_fangShi.setVisibility(View.GONE);
-//                ll_duka.setVisibility(View.VISIBLE);
-//                iv_tu.setImageResource(R.drawable.erweima);
-//                tv_du.setText("请打开支付宝扫码充值");
-//                btn_return.setText("返回");
-//                id = 20;
-//                break;
-//            case R.id.ll_yinLian:
-//                break;
-//            case R.id.ll_xianJin:
-//                ll_fangShi.setVisibility(View.GONE);
-//                ll_duka.setVisibility(View.VISIBLE);
-//                iv_tu.setVisibility(View.GONE);
-//                tv_du.setText("等待您的支付，请投入现金！");
-//                btn_return.setText("返回");
-//                id = 20;
-//                break;
             case R.id.btn_return:
                 if (id == 0) {
                     ll_leiBiao.setVisibility(View.VISIBLE);
@@ -746,8 +531,8 @@ public class TransportationCardFragment extends Fragment {
                             "++++" + apdu + "++++" + arcode + "++++" + arpc);
                 } else if (id == 10) {
                     Double money = Double.valueOf(YuE) + Double.valueOf(jinE);//领款金额和余额
-                    gLogger.debug("余额+补登金额："+ money);
-                    if(money > 1000){
+                    gLogger.debug("余额+补登金额：" + money);
+                    if (money > 1000) {
                         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
                         View aalayout = View.inflate(getActivity(), R.layout.layout_hint, null);
                         Button btn_confirm = aalayout.findViewById(R.id.btn_confirm);
@@ -793,22 +578,7 @@ public class TransportationCardFragment extends Fragment {
                                 tv2.setTextColor(getResources().getColor(R.color.white));
                                 tv3.setBackgroundResource(R.drawable.banner_indicator_selected);
                             } else {
-                                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-                                View aalayout = View.inflate(getActivity(), R.layout.layout_hint, null);
-                                Button btn_confirm = aalayout.findViewById(R.id.btn_confirm);
-                                TextView tv_message = aalayout.findViewById(R.id.tv_message);
-                                tv_message.setText("卡片被移开，请重新放卡");
-                                builder.setCancelable(false)
-                                        .setView(aalayout);
-                                final AlertDialog dialog = builder.create();
-                                dialog.show();
-                                btn_confirm.setOnClickListener(new View.OnClickListener() {
-                                    @Override
-                                    public void onClick(View v) {
-                                        initKongJian();
-                                        dialog.dismiss();
-                                    }
-                                });
+                                showNoCardDialog();
                             }
                         }
                     };
@@ -858,7 +628,6 @@ public class TransportationCardFragment extends Fragment {
                         transport.setArcode(arcode);
                         transport.setArpc(arpc);
                         db.save(transport);//插入一条数据
-
                         //查询所有数据
                         List<TransportCard> all = db.findAll(TransportCard.class);
                         Log.i("tag", "所有数据:" + all.toString());
@@ -866,7 +635,6 @@ public class TransportationCardFragment extends Fragment {
                         e.printStackTrace();
                     }
                 } else if (id == 20) {
-
                     ll_duka.setVisibility(View.GONE);
                     ll_select.setVisibility(View.VISIBLE);
                     ll_fangShi.setVisibility(View.VISIBLE);
@@ -880,8 +648,6 @@ public class TransportationCardFragment extends Fragment {
                         money = tv_zi.getText().toString() + "元";
                     }
                     tv_chongzhi.setText(money);
-//                    btn_return.setText("返回");
-//                    id = 21;
                 } else if (id == 21) {
                     if (code == 1) { //成功
                         handlers.removeCallbacks(runnables);
@@ -902,32 +668,6 @@ public class TransportationCardFragment extends Fragment {
                     btn_return.setText("下一步");
                     btn_return.setVisibility(View.GONE);
                     id = 20;
-//                } else if (id == 23) {
-//                    ll_duka.setVisibility(View.VISIBLE);
-//                    ll_yuEShow.setVisibility(View.GONE);
-//                    iv_tu.setVisibility(View.VISIBLE);
-//                    iv_tu.setImageResource(R.drawable.zhengzaiduka_xieka);
-//                    btn_return.setVisibility(View.GONE);
-//                    tv_du.setText("支付成功，正在写卡");
-//                    t2.setText("");
-//                    t2.setBackgroundResource(R.drawable.wancheng);
-//                    t3.setTextColor(getResources().getColor(R.color.black));
-//                    t3.setBackgroundResource(R.drawable.banner_indicator_selected);
-//                    id = 24;
-//                } else if (id == 24) {
-//                    ll_duka.setVisibility(View.GONE);
-//                    ll_yuEShow.setVisibility(View.VISIBLE);
-//                    tv_success.setVisibility(View.VISIBLE);
-//                    ll_chongzhi.setVisibility(View.GONE);
-//                    ll_jinE.setVisibility(View.VISIBLE);
-//                    ll_jinE1.setVisibility(View.VISIBLE);
-//                    t3.setText("");
-//                    t3.setBackgroundResource(R.drawable.wancheng);
-//                    tv_jin.setText("充值金额：");
-//                    tv_jin1.setText("充值后金额：");
-//                    tv_jinE1.setText((tv_jinE.getText().toString() + tv_money.getText().toString()));
-//                    tv_success.setText("充值成功！");
-//                    id = 25;
                 } else if (id == 25) {
                     ll_leiBiao.setVisibility(View.VISIBLE);
                     ll_yuEFind.setVisibility(View.GONE);
@@ -953,10 +693,50 @@ public class TransportationCardFragment extends Fragment {
                     ll_chong.setEnabled(true);
                 }
                 break;
-            case R.id.ll_yuEFind:
-                break;
         }
     }
+
+    private String initXunKa() {
+        String xunKa = "0200000010800000000600003C0000BECC01010000D803";
+        String data = init(xunKa);
+        if (data == null) {
+            data = init(xunKa);
+            if (data == null) {
+                data = init(xunKa);
+                if (data == null) {
+                    TcnUtility.getToast(getActivity(), "请重新贴卡");
+                    initKongJian();
+                    return "";
+                }
+            }
+        } else if (data.equals("0")) {
+            TcnUtility.getToast(getActivity(), "串口设置有问题");
+            initKongJian();
+            return "";
+        }
+        return data;
+    }
+
+    //没有读到卡片对话框
+    private void showNoCardDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+        View aalayout = View.inflate(getActivity(), R.layout.layout_hint, null);
+        Button btn_confirm = aalayout.findViewById(R.id.btn_confirm);
+        TextView tv_message = aalayout.findViewById(R.id.tv_message);
+        tv_message.setText("卡片被移开，请重新放卡");
+        builder.setCancelable(false)
+                .setView(aalayout);
+        final AlertDialog dialog = builder.create();
+        dialog.show();
+        btn_confirm.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                initKongJian();
+                dialog.dismiss();
+            }
+        });
+    }
+
     //查询
     private void chaXun() {
         ll_fanying.setVisibility(View.GONE);
@@ -1389,13 +1169,16 @@ public class TransportationCardFragment extends Fragment {
                     if (flag == 5) {
                         money = tv_zi.getText().toString() + "元";
                     }
-//                    jinE = money.substring(0, money.length() - 1);//测试使用
-                    jinE = "1";//测试使用
-                    gLogger.debug("余额："+ YuE);
-                    gLogger.debug("充值金额："+ jinE);
+                    if(isTest){
+                        jinE = "1";//测试使用
+                    }else{
+                        jinE = money.substring(0, money.length() - 1);
+                    }
+                    gLogger.debug("余额：" + YuE);
+                    gLogger.debug("充值金额：" + jinE);
                     Double money1 = Double.valueOf(YuE) + Double.valueOf(jinE);// 领款/充值金额和余额
-                    gLogger.debug("余额+充值金额："+ money1);
-                    if(money1 > 1000){
+                    gLogger.debug("余额+充值金额：" + money1);
+                    if (money1 > 1000) {
                         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
                         View aalayout = View.inflate(getActivity(), R.layout.layout_hint, null);
                         Button btn_confirm = aalayout.findViewById(R.id.btn_confirm);
@@ -1434,22 +1217,7 @@ public class TransportationCardFragment extends Fragment {
                                     //调合肥通圈存
                                     initQuanCun("");
                                 } else {
-                                    AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-                                    View aalayout = View.inflate(getActivity(), R.layout.layout_hint, null);
-                                    Button btn_confirm = aalayout.findViewById(R.id.btn_confirm);
-                                    TextView tv_message = aalayout.findViewById(R.id.tv_message);
-                                    tv_message.setText("卡片被移开，请重新放卡");
-                                    builder.setCancelable(false)
-                                            .setView(aalayout);
-                                    final AlertDialog dialog = builder.create();
-                                    dialog.show();
-                                    btn_confirm.setOnClickListener(new View.OnClickListener() {
-                                        @Override
-                                        public void onClick(View v) {
-                                            initKongJian();
-                                            dialog.dismiss();
-                                        }
-                                    });
+                                    showNoCardDialog();
                                 }
                             }
                         };
@@ -1473,22 +1241,7 @@ public class TransportationCardFragment extends Fragment {
                                     //调交通卡圈存
                                     initQuanCun1("");
                                 } else {
-                                    AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-                                    View aalayout = View.inflate(getActivity(), R.layout.layout_hint, null);
-                                    Button btn_confirm = aalayout.findViewById(R.id.btn_confirm);
-                                    TextView tv_message = aalayout.findViewById(R.id.tv_message);
-                                    tv_message.setText("卡片被移开，请重新放卡");
-                                    builder.setCancelable(false)
-                                            .setView(aalayout);
-                                    final AlertDialog dialog = builder.create();
-                                    dialog.show();
-                                    btn_confirm.setOnClickListener(new View.OnClickListener() {
-                                        @Override
-                                        public void onClick(View v) {
-                                            initKongJian();
-                                            dialog.dismiss();
-                                        }
-                                    });
+                                    showNoCardDialog();
                                 }
                             }
                         };
@@ -1499,7 +1252,6 @@ public class TransportationCardFragment extends Fragment {
                     switch (shopName) {
                         case "微信支付":
                             q = 0;
-//                            getData(channel_code, iv_tu);
                             ll_fangShi.setVisibility(View.GONE);
                             ll_select.setVisibility(View.GONE);
                             ll_duka.setVisibility(View.VISIBLE);
@@ -1516,7 +1268,6 @@ public class TransportationCardFragment extends Fragment {
                             break;
                         case "支付宝":
                             q = 0;
-//                            getData(channel_code, iv_tu);
                             ll_fangShi.setVisibility(View.GONE);
                             ll_select.setVisibility(View.GONE);
                             ll_duka.setVisibility(View.VISIBLE);
@@ -1533,7 +1284,6 @@ public class TransportationCardFragment extends Fragment {
                             break;
                         case "银联二维码":
                             q = 0;
-//                            getData(channel_code, iv_tu);
                             ll_fangShi.setVisibility(View.GONE);
                             ll_select.setVisibility(View.GONE);
                             ll_duka.setVisibility(View.VISIBLE);
@@ -1557,10 +1307,11 @@ public class TransportationCardFragment extends Fragment {
     //订单提交并获取充值支付的二维码等数据
     int q;
     private String type1;//电子钱包or电子现金（中银通92bin的）or电子钱包（交通卡）or电子现金（中银通62bin的）
-    private  final String hft_card = "00";//电子钱包（合肥通）
-    private  final String zhongyin__nine_card = "01";//中银通 92bin
-    private  final String zhongyin_six_card = "8";//中银通 62bin
-    private  final String hft_traffic_card = "7";//电子钱包（交通卡）
+    private final String hft_card = "00";//电子钱包（合肥通）
+    private final String zhongyin__nine_card = "01";//中银通 92bin
+    private final String zhongyin_six_card = "8";//中银通 62bin
+    private final String hft_traffic_card = "7";//电子钱包（交通卡）
+
     private void getData(final String payment, final ImageView iv_erweima) {
         btn_return.setEnabled(true);
         gv.setEnabled(true);
@@ -1576,8 +1327,12 @@ public class TransportationCardFragment extends Fragment {
         params.put("cardid", cardNum);//卡号
         params.put("payment", payment);//支付方式
         params.put("type", type1);//支付方式
-        String price = "1";
-//        String price = this.money.substring(0, money.length() - 1);
+        String price ;
+        if(isTest){
+            price = "1";
+        }else{
+            price = this.money.substring(0, money.length() - 1);
+        }
         params.put("price", price);//充值金额
         params.put("source", "terminal");//接口渠道 （固定值terminal）
         params.put("terminal_code", Comment.terminal_code);//终端编号（平台定义）
@@ -1586,7 +1341,7 @@ public class TransportationCardFragment extends Fragment {
         params.put("terminal_order_no", terminal_order_no);//终端订单号 用设备定]义的终端编号+时间戳
         params.put("timestamp", String.valueOf(timeStamp));//Unix时间戳（秒级）
         String signature = MD5Util.encrypt("cardid=" + cardNum + "&payment=" + payment + "&price=" + price + "&source=terminal" + "&terminal_code="
-                + Comment.terminal_code + "&terminal_no=" + terminal_no + "&terminal_order_no=" + terminal_order_no + "&timestamp=" + timeStamp + "&type=" + type1+ "&key=" + key);
+                + Comment.terminal_code + "&terminal_no=" + terminal_no + "&terminal_order_no=" + terminal_order_no + "&timestamp=" + timeStamp + "&type=" + type1 + "&key=" + key);
         params.put("signature", signature);//签名参数
         Log.d(TAG, "getData1: " + params);
         if (q < 1) {
@@ -1641,12 +1396,8 @@ public class TransportationCardFragment extends Fragment {
                             }
                             GlideUtils.load(getActivity(), code_img_url, iv_erweima);
                             btn_return.setEnabled(true);
-                            a = 0;
                             cancle = false;
-//                            initGPO("");
-
                             sockerStar();
-//                            rechage_init("");
                         }
                     } catch (JSONException e) {
                         e.printStackTrace();
@@ -1747,7 +1498,7 @@ public class TransportationCardFragment extends Fragment {
     //持续向后台发送订单查询
     int b;
     boolean cancle = false;//是否取消查询订单用
-    private String new_status ;//新订单状态
+    private String new_status;//新订单状态
 
     private void sockerStar() {
         //几秒后发送获取订单状态
@@ -1761,7 +1512,7 @@ public class TransportationCardFragment extends Fragment {
                 Map<String, String> params = new HashMap<>();
                 params.put("terminal_code", Comment.terminal_code);//终端编号（平台定义）
                 params.put("order_code", new_order_code);//订单生成的时候返回的
-                Log.d("TAG", "查询充值订单:url=" + url+",new_order_code="+new_order_code);
+                Log.d("TAG", "查询充值订单:url=" + url + ",new_order_code=" + new_order_code);
 //
 //                params.put("timestamp", String.valueOf(timeStamp));//Unix时间戳（秒级）
                 String signature = MD5Util.encrypt("order_no=" + new_order_code + "&terminal_code=" + Comment.terminal_code + "&timestamp=" + timeStamp + "&key=" + key);
@@ -1796,7 +1547,7 @@ public class TransportationCardFragment extends Fragment {
                                 new_status = orderInfoObj.optString("status");
                                 //00：未支付01：支付中02：已支付 03：充值中 04：充值成功05：充值失败06：退款中07：退款成功08：退款失败 09：订单已关闭 10：写卡未知 11：写卡失败
 
-                                if(new_status.equals("02")){
+                                if (new_status.equals("02")) {
                                     handlers.removeCallbacks(runnables);
                                     createtime = orderInfoObj.getString("createtime");
 //                                    String trade_time = orderInfoObj.getString("createtime");
@@ -1827,22 +1578,7 @@ public class TransportationCardFragment extends Fragment {
                                                     tv2.setTextColor(getResources().getColor(R.color.white));
                                                     tv3.setBackgroundResource(R.drawable.banner_indicator_selected);
                                                 } else {
-                                                    AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-                                                    View aalayout = View.inflate(getActivity(), R.layout.layout_hint, null);
-                                                    Button btn_confirm = aalayout.findViewById(R.id.btn_confirm);
-                                                    TextView tv_message = aalayout.findViewById(R.id.tv_message);
-                                                    tv_message.setText("卡片被移开，请重新放卡");
-                                                    builder.setCancelable(false)
-                                                            .setView(aalayout);
-                                                    final AlertDialog dialog = builder.create();
-                                                    dialog.show();
-                                                    btn_confirm.setOnClickListener(new View.OnClickListener() {
-                                                        @Override
-                                                        public void onClick(View v) {
-                                                            initKongJian();
-                                                            dialog.dismiss();
-                                                        }
-                                                    });
+                                                    showNoCardDialog();
                                                 }
                                             }
                                         };
@@ -2119,22 +1855,14 @@ public class TransportationCardFragment extends Fragment {
                 @Override
                 public void run() {
                     if (read0015 != null && !read0015.equals("")) {
-//                        Log.d("TAG", "onViewClicked4: " + read0015);
                         String substring = read0015.substring(10, read0015.length() - 4);
                         String sub = substring.substring(20, substring.length() - 8);
                         data0015 = sub;
-//                                                                String applicationId = sub.substring(0, 4);//应用标识
-//                                                                String cityCode = sub.substring(4, 8);//城市代码
-//                                                                String industryCode = sub.substring(8, 12);//a行业代码
-//                                                                String RFU = sub.substring(12, 16);//RFU
-//                                                                String enableSign = sub.substring(16, 18);//启用标志 00：未启用 01：启用
                         if (type1.equals(hft_card)) {
                             cardNum = sub.substring(32, 40);//卡号（合肥通）
                         } else if (type1.equals(hft_traffic_card)) {
                             cardNum = sub.substring(21, 40);//卡号（交通卡）
                         }
-//                        type1 = sub.substring(28, 32);//电子现金or电子钱包
-
                         Double d = (double) start / 100;
                         DecimalFormat df = new DecimalFormat("#0.00");
                         YuE = df.format(d);
@@ -2198,29 +1926,22 @@ public class TransportationCardFragment extends Fragment {
                         String substring = read0015.substring(10, read0015.length() - 4);
                         String sub = substring.substring(20, substring.length() - 8);
                         data0015 = sub;
-//                                                                String applicationId = sub.substring(0, 4);//应用标识
-//                                                                String cityCode = sub.substring(4, 8);//城市代码
-//                                                                String industryCode = sub.substring(8, 12);//a行业代码
-//                                                                String RFU = sub.substring(12, 16);//RFU
-//                                                                String enableSign = sub.substring(16, 18);//启用标志 00：未启用 01：启用
-                        //卡号
                         String[] strings = sub.split("5A");
                         String s1 = strings[1].substring(0, 2);
                         int s = Integer.parseInt(s1, 16);
                         cardNum = strings[1].substring(2, (s * 2 + 1));
 
-//                        cardNum = sub.substring(8, 27);
                         Log.d("TAG", "aaaavv: " + substring);
                         Double d = (double) start / 100;
                         DecimalFormat df = new DecimalFormat("#0.00");
                         YuE = df.format(d);
                         Log.d("TAG", "runD: " + YuE);
-                        if (id == 10) {
+                        if (id == 10) {//补登
                             tv_money.setText(YuE + "元");
                             tv_card.setText(cardNum);
                             btn_return.setText("领款");
                             initGetBuDengLingKuanMoney(start, cardNum);
-                        } else if (id == 20) {
+                        } else if (id == 20) {//在线充值
                             ll_duka.setVisibility(View.GONE);
                             ll_chongzhi.setVisibility(View.VISIBLE);
                             ll_select.setVisibility(View.VISIBLE);
@@ -2380,12 +2101,12 @@ public class TransportationCardFragment extends Fragment {
                                 data0005 = sub;
                                 Log.d("TAG", "runinitGetBuDeng0005File: " + data0005);
                                 if (id == 10) {
-                                    if (type.equals(hft_card) ) {
+                                    if (type.equals(hft_card)) {
                                         initQuanCun(read0005);
-                                    }else if(type.equals(hft_traffic_card)){
+                                    } else if (type.equals(hft_traffic_card)) {
                                         initQuanCun1(read0005);
                                     }
-                                }else if(id == 20){
+                                } else if (id == 20) {
                                     initPayData();
                                 }
                             } else {
@@ -2408,9 +2129,9 @@ public class TransportationCardFragment extends Fragment {
     private void initGPO(String xun) {
         String s9F66 = "40000000";//终端交易属性
         String s9F02 = "";
-        if (jinE.length() < 3 &&jinE.length()>1) {
+        if (jinE.length() < 3 && jinE.length() > 1) {
             s9F02 = "00000000" + Integer.parseInt(jinE) * 100;//授权金额
-        }else if(jinE.length() == 1){
+        } else if (jinE.length() == 1) {
             s9F02 = "000000000" + Integer.parseInt(jinE) * 100;//授权金额
         } else {
             s9F02 = "0000000" + Integer.parseInt(jinE) * 100;//授权金额
@@ -2460,9 +2181,9 @@ public class TransportationCardFragment extends Fragment {
     private void initFirstGAC() {
         gLogger.debug("金额：" + jinE);
         String s9F02 = "";
-        if (jinE.length() < 3 &&jinE.length()>1) {
+        if (jinE.length() < 3 && jinE.length() > 1) {
             s9F02 = "00000000" + Integer.parseInt(jinE) * 100;//授权金额
-        }else if(jinE.length() == 1){
+        } else if (jinE.length() == 1) {
             s9F02 = "000000000" + Integer.parseInt(jinE) * 100;//授权金额
         } else {
             s9F02 = "0000000" + Integer.parseInt(jinE) * 100;//授权金额
@@ -2508,9 +2229,9 @@ public class TransportationCardFragment extends Fragment {
     //第二次发GAC指令 code:认证通过的授权码
     private void initSecondGAC(String code, String apdu) {
         String s9F02 = "";
-        if (jinE.length() < 3 &&jinE.length()>1) {
+        if (jinE.length() < 3 && jinE.length() > 1) {
             s9F02 = "00000000" + Integer.parseInt(jinE) * 100;//授权金额
-        }else if(jinE.length() == 1){
+        } else if (jinE.length() == 1) {
             s9F02 = "000000000" + Integer.parseInt(jinE) * 100;//授权金额
         } else {
             s9F02 = "0000000" + Integer.parseInt(jinE) * 100;//授权金额
@@ -2538,22 +2259,6 @@ public class TransportationCardFragment extends Fragment {
             return;
         }
         sendXieKa(apdu);
-    }
-
-    private static Logger gLogger;
-
-    public static void configLog() {
-        final LogConfigurator logConfigurator = new LogConfigurator();
-
-        logConfigurator.setFileName(Environment.getExternalStorageDirectory() + File.separator + "crifanli_log4j.log");
-        // Set the root log level
-        logConfigurator.setRootLevel(Level.DEBUG);
-        // Set log level of a specific logger
-        logConfigurator.setLevel("org.apache", Level.ERROR);
-        logConfigurator.configure();
-
-        //gLogger = Logger.getLogger(this.getClass());
-        gLogger = Logger.getLogger("TransportationCardFragment");
     }
 
     //获取写卡指令
@@ -2600,7 +2305,7 @@ public class TransportationCardFragment extends Fragment {
                     @Override
                     public void onError(Call call, Exception e, int id) {
                         Log.d("TAG", "onResponse:失败" + e);
-                        gLogger.debug("发送写卡结果失败"  + e);
+                        gLogger.debug("发送写卡结果失败" + e);
                         TcnUtility.getToast(getActivity(), "发送写卡结果失败，请您联系工作人员");
                         try {
                             //根据配置信息获取操作数据的db对象
@@ -2635,7 +2340,7 @@ public class TransportationCardFragment extends Fragment {
                     @Override
                     public void onResponse(String response, int id_) {
                         Log.d("TAG", "onResponse:发送写卡结果成功" + response);
-                        gLogger.debug("发送写卡结果成功"  + response);
+                        gLogger.debug("发送写卡结果成功" + response);
                         try {
                             JSONObject jsonObject = new JSONObject(response);
 
@@ -2662,8 +2367,6 @@ public class TransportationCardFragment extends Fragment {
                         TcnUtility.getToast(getActivity(), err_desc);
                         gLogger.debug("错误提示：" + err_desc);
                         initKongJian();
-                        a = 0;
-//                        initSignin(2);
                     } else {
                         jsonObject = jsonObject.getJSONObject("order");
                         //写卡指令
@@ -3394,50 +3097,15 @@ public class TransportationCardFragment extends Fragment {
         tv_zi.setTextColor(getResources().getColor(R.color.black));
     }
 
-    //获取屏幕分辨率：宽
-    public int getAndroiodScreenProperty() {
+    private void initScreen() {
         WindowManager wm = (WindowManager) getActivity().getWindowManager();
         DisplayMetrics dm = new DisplayMetrics();
         wm.getDefaultDisplay().getMetrics(dm);
         int width = dm.widthPixels;// 屏幕宽度（像素）
         int height = dm.heightPixels; // 屏幕高度（像素）
-        float density = dm.density;//屏幕密度（0.75 / 1.0 / 1.5）
-        int densityDpi = dm.densityDpi;//屏幕密度dpi（120 / 160 / 240）
-        // 屏幕宽度算法:屏幕宽度（像素）/屏幕密度
-        int screenWidth = (int) (width / density);//屏幕宽度(dp)
-        int screenHeight = (int) (height / density);//屏幕高度(dp)
-//        Log.e("12", width + "======" + height);
-//        Log.e("123", screenWidth + "======" + screenHeight);
-        return width;
-    }
-
-    //获取屏幕分辨率：高
-    public int getAndroiodScreenPropertyH() {
-        WindowManager wm = (WindowManager) getActivity().getWindowManager();
-        DisplayMetrics dm = new DisplayMetrics();
-        wm.getDefaultDisplay().getMetrics(dm);
-        // 屏幕宽度（像素）
-        int width = dm.widthPixels;
-        // 屏幕高度（像素）
-        int height = dm.heightPixels;
-        float density = dm.density;//屏幕密度（0.75 / 1.0 / 1.5）
-        int densityDpi = dm.densityDpi;//屏幕密度dpi（120 / 160 / 240）
-        // 屏幕宽度算法:屏幕宽度（像素）/屏幕密度
-        int screenWidth = (int) (width / density);//屏幕宽度(dp)
-        int screenHeight = (int) (height / density);//屏幕高度(dp)
-//        Log.e("12", width + "======" + height);
-//        Log.e("123", screenWidth + "======" + screenHeight);
-        return height;
-    }
-
-    //硬件返回数据
-    protected void onDataReceived(final byte[] buffer, final int size) {
-        getActivity().runOnUiThread(new Runnable() {
-            public void run() {
-                String recinfo = Utils.byteArrayToHexString(buffer);
-                Log.i("test", "接收到串口信息======" + recinfo);
-            }
-        });
+        this.width = width;
+        this.height = height;
+        gLogger = Utils.configLog();
     }
 
     /**
@@ -3471,39 +3139,13 @@ public class TransportationCardFragment extends Fragment {
                 });
     }
 
-    //终端签到
-    //    String param = "terminal_code="+Comment.terminal_code + "&timestamp=" + timeStamp + "&auth_sign=" + ciphertext;
-    //    Log.d("TAG","initData: "+param);
-    int a;
-    int flag1 = -1;
-    int flag2 = -1;
-
-    private void initSignin(final int flag) {
-        if (flag == -1) {
-            flag1 = flag;
-            Log.d(TAG, "initFlag: " + flag1);
-        } else {
-            flag2 = flag;
-            Log.d(TAG, "initFlag: " + flag2);
-        }
-        String url = Comment.URL + "/terminal/signin";
-        timeStamp = getTimeStamp();
+    private void initSignin() {
+        init();
+        timeStamp = Utils.getTimeStamp();
         key = Comment.KEY;
-    }
-
-    private long getTimeStamp() {
-        //秒级时间戳获取
-        SimpleDateFormat formatter = new SimpleDateFormat("yyyy年MM月dd日 HH:mm:ss");
-        Date curDate = new Date(System.currentTimeMillis());
-        String str = formatter.format(curDate);
-        Date date = null;
-        try {
-            date = formatter.parse(str);
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-        long timeStamp = date.getTime() / 1000;
-        Log.d("xxxxx", timeStamp + "");
-        return timeStamp;
+        ll_leiBiao.setVisibility(View.GONE);
+        ll_yuEFind.setVisibility(View.VISIBLE);
+        ll_fanying.setVisibility(View.VISIBLE);
+        btn_return.setVisibility(View.GONE);
     }
 }
